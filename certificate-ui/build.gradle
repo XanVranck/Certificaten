@@ -1,29 +1,78 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
+apply plugin: 'war'
+apply plugin: 'com.moowork.node'
+
 buildscript {
-	ext {
-		springBootVersion = '1.5.3.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+    repositories {
+        mavenLocal()
+        mavenCentral()
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
+    }
+
+    dependencies {
+        classpath "com.moowork.gradle:gradle-node-plugin:1.1.1"
+    }
 }
 
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'org.springframework.boot'
+node {
+    // Version of node to use.
+    version = '7.7.1'
+	
+    yarnVersion = '1.0.1'
 
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.8
+    // Base URL for fetching node distributions (change if you have a mirror).
+    distBaseUrl = 'https://nodejs.org/dist'
 
-repositories {
-	mavenCentral()
+    // If true, it will download node using above parameters.
+    // If false, it will try to use globally installed node.
+    if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+        download = false
+    } else {
+        download = true
+    }
+
+    // Set the work directory for unpacking node
+    workDir = file("${project.buildDir}/nodejs")
+
+    // Set the work directory where node_modules should be located
+    nodeModulesDir = file("${project.projectDir}")
 }
 
+yarn_install {
+    workingDir = file('./src')
+}
 
-dependencies {
-	compile('org.springframework.boot:spring-boot-starter-security')
-	compile('org.springframework.boot:spring-boot-starter-web')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+npmInstall {
+    workingDir = file('./src')
+    outputs.upToDateWhen {false}
+}
+
+task npmCacheClean(type: NpmTask) {
+    workingDir = file('./src')
+    args = ['cache', 'clean']
+}
+
+test.dependsOn 'ngTest'
+war.dependsOn 'ngBuildProd'
+
+task ngTest(type: NpmTask) {
+    workingDir = file('./src')
+    args = ['run', 'ngSingleTest']
+}
+
+task start(type: NpmTask) {
+    workingDir = file('./src')
+    args = ['start']
+}
+
+task ngBuildProd(type: NpmTask) {
+    workingDir = file('./src')
+    args = ['run', 'buildProd']
+}
+
+war {
+    from 'src/dist'
 }
