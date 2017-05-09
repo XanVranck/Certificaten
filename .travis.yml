@@ -14,3 +14,5 @@ cache:
     
   
   script: ./gradlew test
+
+  install: travis_wait mvn install
