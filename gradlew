@@ -33,6 +33,8 @@ DEFAULT_JVM_OPTS=""
 # Use the maximum available, or set MAX_FD != -1 to use that value.
 MAX_FD="maximum"
 
+./gradlew check
+
 warn ( ) {
     echo "$*"
 }
