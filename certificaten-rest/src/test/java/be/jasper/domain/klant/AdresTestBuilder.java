@@ -38,12 +38,6 @@ public class AdresTestBuilder {
     }
 
     public Adres build() {
-        return AdresTestBuilder
-                .builder()
-                .withStraat(straat)
-                .withNummer(nummer)
-                .withPostCode(postCode)
-                .withStad(stad)
-                .build();
+        return new Adres(straat, nummer, postCode, stad);
     }
 }
