@@ -1,6 +1,10 @@
 package be.jasper.domain.klant;
 
+import be.jasper.domain.order.Order;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -15,9 +19,13 @@ public class Klant {
     @Column(name = "NAAM")
     private String naam;
 
+    //TODO:moet join collum naam van collum in adres zijn, of de naam die ik wil geven?
     @OneToOne
-    @JoinColumn(name = "FK_ADRES_ID")
+    @JoinColumn(name = "ADRES_ID")
     private Adres adres;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Order> orders = new ArrayList<>();
 
 
     public Klant(String naam, Adres adres) {
@@ -34,5 +42,13 @@ public class Klant {
 
     public Adres getAdres() {
         return adres;
+    }
+
+    public List<Order> getOrders(){
+        return orders;
+    }
+
+    public void addOrder(Order order) {
+        orders.add(order);
     }
 }

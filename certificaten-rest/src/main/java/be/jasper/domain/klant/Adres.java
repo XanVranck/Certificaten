@@ -1,11 +1,13 @@
 package be.jasper.domain.klant;
 
+import javax.inject.Named;
 import javax.persistence.*;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "ADRES")
+@Named
 public class Adres {
     @Id
     @GeneratedValue(strategy = IDENTITY)
