@@ -16,6 +16,7 @@ public class KlantTest {
         assertThat(klant.getNaam()).isEqualTo("Xan");
     }
 
+    
     @Test
     public void createKlant_getAdresShouldReturnAdres() throws Exception {
         Adres adres = new Adres("Schoolstraat", "78", "1745", "Opwijk");
