@@ -13,6 +13,11 @@ cache:
     - $HOME/.gradle/wrapper/
       
       
+sudo: false
+addons:
+  apt:
+    packages:
+      - oracle-java8-installer
   jdk:
   - oraclejdk8
   script: ./gradlew test
