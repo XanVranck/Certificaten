@@ -58,12 +58,12 @@ public class KlantRepositoryTest extends SpringIntegrationTest {
 
         klantService.addKlant(jasper);
 
-        assertThat(klantRepository.getKlanten()).containsExactly(xan, nena, jasper);
+        assertThat(klantRepository.getKlanten()).contains(xan, nena, jasper);
     }
 
     @Test
     public void getKlanten() throws Exception {
-        assertThat(klantRepository.getKlanten()).containsExactly(xan, nena);
+        assertThat(klantRepository.getKlanten()).contains(xan, nena);
     }
 
     @After
