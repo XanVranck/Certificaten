@@ -3,6 +3,8 @@ version = '0.0.1-SNAPSHOT'
 
 apply plugin: 'java'
 
+println System.getProperty("java.home")
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
