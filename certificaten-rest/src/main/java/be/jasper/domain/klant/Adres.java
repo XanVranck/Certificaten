@@ -1,16 +1,37 @@
 package be.jasper.domain.klant;
 
-/**
- * Created by xanv on 9/05/2017.
- */
+import javax.persistence.*;
+
+import static javax.persistence.GenerationType.IDENTITY;
+
+@Entity
+@Table(name = "ADRES")
 public class Adres {
-    private String straat, nummer, postCode, stad;
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "ADRES_ID")
+    private  int adresID;
+
+    @Column(name = "STRAAT")
+    private String straat;
+
+    @Column(name = "NUMMER")
+    private String nummer;
+
+    @Column(name = "POSTCODE")
+    private String postCode;
+
+    @Column(name = "STAD")
+    private String stad;
 
     public Adres(String straat, String nummer, String postCode, String stad) {
         this.straat = straat;
         this.nummer = nummer;
         this.postCode = postCode;
         this.stad = stad;
+    }
+
+    public Adres() {
     }
 
     public String getStraat() {

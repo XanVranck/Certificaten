@@ -1,15 +1,31 @@
 package be.jasper.domain.klant;
 
-/**
- * Created by xanv on 9/05/2017.
- */
+import javax.persistence.*;
+
+import static javax.persistence.GenerationType.IDENTITY;
+
+@Entity
+@Table(name = "KLANTEN")
 public class Klant {
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "KLANT_ID")
+    private  int klantID;
+
+    @Column(name = "NAAM")
     private String naam;
+
+    @OneToOne
+    @JoinColumn(name = "ADRES_ID")
     private Adres adres;
+
 
     public Klant(String naam, Adres adres) {
         this.naam = naam;
         this.adres = adres;
+    }
+
+    public Klant() {
     }
 
     public String getNaam() {
