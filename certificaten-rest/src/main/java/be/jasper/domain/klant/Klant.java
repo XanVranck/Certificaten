@@ -16,7 +16,7 @@ public class Klant {
     private String naam;
 
     @OneToOne
-    @JoinColumn(name = "ADRES_ID")
+    @JoinColumn(name = "FK_ADRES_ID")
     private Adres adres;
 
 
