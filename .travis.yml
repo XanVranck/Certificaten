@@ -13,7 +13,7 @@ cache:
     - $HOME/.gradle/wrapper/
       
       
- sudo apt install oracle-java8-set-default
+ 
 sudo: false
 addons:
   apt:
@@ -22,3 +22,5 @@ addons:
   jdk:
   - oraclejdk8
   script: ./gradlew test
+  
+  sudo apt install oracle-java8-set-default
