@@ -1,7 +1,7 @@
 language: java
 
 before_install:
- - chmod +x ./gradlew
+ - chmod +x gradle/wrapper/gradle-wrapper.jar
  
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
@@ -13,5 +13,3 @@ cache:
     - $HOME/.gradle/wrapper/
       
   script: ./gradlew test
-
-  install: travis_wait mvn install
