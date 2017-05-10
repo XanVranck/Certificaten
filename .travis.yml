@@ -22,5 +22,3 @@ addons:
   jdk:
   - oraclejdk8
   script: ./gradlew test
-  
-  sudo apt install oracle-java8-set-default
