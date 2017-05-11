@@ -29,7 +29,6 @@ public class KlantRepositoryTest extends SpringIntegrationTest {
 
     private AdresTestBuilder adresTestBuilder = new AdresTestBuilder();
 
-    //TODO: save adres in DB!
     @Before
     public void setUp() throws Exception {
         adresXan = adresTestBuilder.build();

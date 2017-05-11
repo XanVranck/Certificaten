@@ -22,4 +22,8 @@ public class KlantRepository {
     public List<Klant> getKlanten() {
         return entityManager.createQuery("select k from Klant k", Klant.class).getResultList();
     }
+
+    public Klant findKlantById(int klantId){
+        return entityManager.find(Klant.class, klantId);
+    }
 }
