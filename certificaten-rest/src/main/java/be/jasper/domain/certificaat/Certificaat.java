@@ -19,12 +19,12 @@ public class Certificaat {
     private String certificaatDatum;
 
     @Column(name = "SPECIFIEK_TONNAGE")
-    private int specifiekGewicht;
+    private int specifiekTonnage;
 
     public Certificaat(String certificaatNummer, String certificaatDatum, int specifiekGewicht) {
         this.certificaatNummer = certificaatNummer;
         this.certificaatDatum = certificaatDatum;
-        this.specifiekGewicht = specifiekGewicht;
+        this.specifiekTonnage = specifiekGewicht;
     }
 
     public Certificaat() {
@@ -42,7 +42,7 @@ public class Certificaat {
         return certificaatDatum;
     }
 
-    public int getSpecifiekGewicht() {
-        return specifiekGewicht;
+    public int getSpecifiekTonnage() {
+        return specifiekTonnage;
     }
 }

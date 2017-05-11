@@ -19,7 +19,7 @@ public class CertificaatTest {
     public void testCertificaatGetters() throws Exception {
         Assertions.assertThat(certificaat.getCertificaatDatum()).isEqualTo("17/08/1992");
         Assertions.assertThat(certificaat.getCertificaatNummer()).isEqualTo("205");
-        Assertions.assertThat(certificaat.getSpecifiekGewicht()).isEqualTo(250);
+        Assertions.assertThat(certificaat.getSpecifiekTonnage()).isEqualTo(250);
 
     }
 }
