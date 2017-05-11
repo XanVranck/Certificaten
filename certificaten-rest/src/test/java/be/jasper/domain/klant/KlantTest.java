@@ -40,6 +40,6 @@ public class KlantTest {
 
         klant.addOrder(order);
 
-        assertThat(klant.getOrders()).containsOnly(order);
+        assertThat(klant.getOrders()).contains(order);
     }
 }

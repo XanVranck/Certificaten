@@ -19,7 +19,6 @@ public class Klant {
     @Column(name = "NAAM")
     private String naam;
 
-    //TODO:moet join collum naam van collum in adres zijn, of de naam die ik wil geven?
     @OneToOne
     @JoinColumn(name = "ADRES_ID")
     private Adres adres;

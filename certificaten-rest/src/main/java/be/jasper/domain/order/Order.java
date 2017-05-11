@@ -1,6 +1,10 @@
 package be.jasper.domain.order;
 
+import be.jasper.domain.certificaat.Certificaat;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "ORDERS")
@@ -22,8 +26,8 @@ public class Order {
     @Column(name = "TOTAAL")
     private int totaal;
 
-//    @OneToMany(cascade = CascadeType.ALL)
-//    private List<Certificaat> certificaten = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Certificaat> certificaten = new ArrayList<>();
 
     public Order() {
     }
@@ -55,12 +59,12 @@ public class Order {
         return totaal;
     }
 
-//    public void addCertificaat(Certificaat certificaat) {
-//        certificaten.add(certificaat);
-//    }
-//
-//
-//    public List<Certificaat> getCertificaten() {
-//        return certificaten;
-//    }
+    public void addCertificaat(Certificaat certificaat) {
+        certificaten.add(certificaat);
+    }
+
+
+    public List<Certificaat> getCertificaten() {
+        return new ArrayList<>(certificaten);
+    }
 }
