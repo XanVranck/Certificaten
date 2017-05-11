@@ -2,9 +2,9 @@ package be.jasper.domain.order;
 
 import be.jasper.controller.OrderDTO;
 
-/**
- * Created by xanv on 11/05/2017.
- */
+import javax.inject.Named;
+
+@Named
 public class OrderFactory {
     public OrderFactory() {
     }
