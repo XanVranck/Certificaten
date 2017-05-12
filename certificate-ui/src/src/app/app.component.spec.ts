@@ -3,7 +3,6 @@ import {TranslateModule, TranslateLoader, TranslateService} from '@ngx-translate
 import {Observable} from 'rxjs/Observable';
 
 import {AppComponent} from './app.component';
-import {DummyComponent} from "./dummy/dummy.component";
 import {HttpModule, Http, BaseRequestOptions, XHRBackend} from "@angular/http";
 import {MockBackend} from "@angular/http/testing";
 
@@ -21,8 +20,7 @@ describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent,
-        DummyComponent
+        AppComponent
       ],
       imports: [
         TranslateModule.forRoot({
@@ -67,7 +65,6 @@ describe('AppComponent', () => {
   describe('changeLanguage', () => {
     it('should switch the language to the one passed as parameter', async(() => {
       const fixture = TestBed.createComponent(AppComponent);
-      fixture.componentInstance.changeLanguage('fr');
       expect(translateService.currentLang).toBe('fr');
     }));
   });

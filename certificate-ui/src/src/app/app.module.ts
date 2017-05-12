@@ -10,9 +10,6 @@ import { AppComponent } from './app.component';
 import { klantenComponent } from './klanten/klanten.component';
 import {routes} from './app.routes';
 
-export function HttpLoaderFactory(http: Http) {
-  return new TranslateHttpLoader(http);
-}
 
 @NgModule({
   declarations: [

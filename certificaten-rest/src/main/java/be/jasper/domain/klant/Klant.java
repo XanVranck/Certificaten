@@ -35,6 +35,10 @@ public class Klant {
     public Klant() {
     }
 
+    public int getKlantID() {
+        return klantID;
+    }
+
     public String getNaam() {
         return naam;
     }
