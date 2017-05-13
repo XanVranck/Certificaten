@@ -81,9 +81,13 @@ export class klantenComponent {
 
     }
 
+    get klanten():Array<Klant>{
+        return this._klanten
+    }
+
     ngOnInit(){
         this._klantService
             .getKlanten()
-            .subscribe(klanten => this._klanten = klanten)
+            .subscribe(klant => this._klanten = klant)
     }
 }

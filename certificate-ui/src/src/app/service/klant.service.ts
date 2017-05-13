@@ -16,7 +16,7 @@ export class KlantService{
 
     getKlanten():Observable<Array<Klant>>{
         return this._http
-                    .get(`${environment.baseUrl}/klant`)
+                    .get(this._klantUrl)
                     .map((response:Response)=> response.json())                    
     }
 
