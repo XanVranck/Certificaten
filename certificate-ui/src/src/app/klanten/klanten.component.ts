@@ -11,10 +11,10 @@ import {Router} from "@angular/router";
             <form class="ccform">
                 <div class="ccfield-prepend">
                     <span class="ccform-addon"><i class="fa fa-users fa-2x"></i></span>
-                    <input list="getKlanten" name="klant" placeholder="Klanten" class="ccformfield" required>
-                    <datalist id="customers" *ngFor="let klant of _klanten">
-                        <option (click)="selectKlant(klant)" value="{{Klant.naam}}">
-                    </datalist>
+                 <input list="customers" name="klant" placeholder="Klanten" class="ccformfield" required>
+                     <datalist id="customers">
+                        <option *ngFor="let klant of klanten" (click)="selectKlant(klant)" value="{{klant.naam}}">{{klant.naam}}</option>
+                    </datalist>                  
                 </div>
                 <div class="ccfield-prepend">
                     <input class="ccbtn" type="submit" value="Submit">
@@ -52,13 +52,13 @@ import {Router} from "@angular/router";
     `
 })
 
-export class klantenComponent {
+export class klantenComponent implements OnInit {
     private _klant:Klant;
     private selectedKlant: Klant;
     private _klanten: Array<Klant>;
-    private _klantService: KlantService;
+    ;
 
-    constructor(private router: Router){
+    constructor(private router: Router, private _klantService: KlantService){
         this._klanten = [];
         this.selectedKlant=undefined;
     }

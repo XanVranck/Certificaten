@@ -5,6 +5,7 @@ import { Observable } from "rxjs/Observable";
 import { Klant } from "../model/klant";
 import {promise} from "selenium-webdriver";
 import map = promise.map;
+import 'rxjs/Rx';
 
 @Injectable()
 export class KlantService{

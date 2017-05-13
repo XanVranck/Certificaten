@@ -3,6 +3,7 @@ package be.jasper.controller;
 import be.jasper.domain.klant.Klant;
 import be.jasper.domain.klant.KlantService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -34,12 +35,14 @@ public class KlantController {
 //    }
 
     @RequestMapping(method = POST)
+    @CrossOrigin(origins = "http://localhost:4200")
     @ResponseBody
     public void addKlant(@RequestBody Klant klant){
         klantService.addKlant(klant);
     }
 
     @RequestMapping(method = GET)
+    @CrossOrigin(origins = "http://localhost:4200")
     @ResponseBody
     public List<Klant> getKlanten(){
         return klantService.getKlanten();

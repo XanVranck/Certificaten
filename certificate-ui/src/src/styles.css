@@ -125,6 +125,12 @@ table tbody tr{
     background:#d8850e;
 
 }
+
+.scroll{
+    overflow:scroll;
+    height: 200px;
+}
+
 .credit {
     width: 800px;
     clear:both;
