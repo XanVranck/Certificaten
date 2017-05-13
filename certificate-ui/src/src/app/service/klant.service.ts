@@ -3,6 +3,8 @@ import { Http, Response, Headers } from "@angular/http";
 import { environment } from "../../environments/environment";
 import { Observable } from "rxjs/Observable";
 import { Klant } from "../model/klant";
+import {KlantClass} from '../model/klant'
+import {Adres} from '../model/adres'
 import {promise} from "selenium-webdriver";
 import map = promise.map;
 import 'rxjs/Rx';
@@ -10,6 +12,8 @@ import 'rxjs/Rx';
 @Injectable()
 export class KlantService{
     private _klantUrl: string;
+    private _klant:Klant;
+    private _adres:Adres;
     
     constructor(private _http:Http){
         this._klantUrl = `${environment.baseUrl}/klant`;
@@ -21,9 +25,17 @@ export class KlantService{
                     .map((response:Response)=> response.json())                    
     }
 
-    addKlant(klant:Klant){
-        console.log("klantservice add klant")
+    addKlant(naam:string, straat:string, nummer:string, postCode:string, stad:string){
+        this._klant = { 
+                        "naam":naam,
+                        "straat":straat,
+                        "nummer":nummer,
+                        "postCode":postCode,
+                        "stad":stad
+                    }
+        //new KlantClass(naam,straat, nummer, postCode, stad);
+        console.log("klantservice add klant", this._klant)
         this._http
-            .post(this._klantUrl, klant)
+            .post(this._klantUrl, {naam,straat, nummer, postCode, stad})
     }
 }

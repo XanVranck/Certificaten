@@ -26,26 +26,26 @@ import {Router} from "@angular/router";
             <form class="ccform">
                 <div class="ccfield-prepend">
                     <span class="ccform-addon"><i class="fa fa-user-plus fa-2x"></i></span>
-                    <input class="ccformfield" type="text" placeholder="Naam" required>
+                    <input #naamKl class="ccformfield" type="text" placeholder="Naam" required>
                 </div>
                 <div class="ccfield-prepend">
                     <span class="ccform-addon"><i class="fa fa-id-card-o fa-2x"></i></span>
-                    <input class="ccformfield" type="text" placeholder="Straat" required>
+                    <input #straatKl class="ccformfield" type="text" placeholder="Straat" required>
                 </div>
                 <div class="ccfield-prepend">
                     <span class="ccform-addon"><i class="fa fa-sort-numeric-asc fa-2x"></i></span>
-                    <input class="ccformfield" type="text" placeholder="Huisnummer" required>
+                    <input #nummerKl class="ccformfield" type="text" placeholder="Huisnummer" required>
                 </div>
                 <div class="ccfield-prepend">
                     <span class="ccform-addon"><i class="fa fa-info fa-2x"></i></span>
-                    <input class="ccformfield" type="text" placeholder="Postcode" required>
+                    <input #postCodeKl class="ccformfield" type="text" placeholder="Postcode" required>
                 </div>
                 <div class="ccfield-prepend">
                     <span class="ccform-addon"><i class="fa fa-building fa-2x"></i></span>
-                    <input class="ccformfield" type="text" placeholder="Stad" required>
+                    <input #stadKl class="ccformfield" type="text" placeholder="Stad" required>
                 </div>
                 <div class="ccfield-prepend">
-                    <input class="ccbtn" type="submit" value="Submit" (click)=addKlant(klant)>
+                    <input class="ccbtn" type="submit" (click)="addKlant(naamKl.value, straatKl.value, nummerKl.value, postCodeKl.value, stadKl.value)" value="Submit">
                 </div>
             </form>
         </div>
@@ -56,7 +56,11 @@ export class klantenComponent implements OnInit {
     private _klant:Klant;
     private selectedKlant: Klant;
     private _klanten: Array<Klant>;
-    ;
+    private _naam: string;
+    private _straat:string;
+    private _nummer:string;
+    private _postCode:string;
+    private _stad:string;
 
     constructor(private router: Router, private _klantService: KlantService){
         this._klanten = [];
@@ -73,11 +77,11 @@ export class klantenComponent implements OnInit {
         this.selectedKlant = null;
     }
 
-    addKlant(klant:Klant){
+    addKlant(naam:string, straat:string, nummer:string, postCode:string, stad:string){
         console.log("addKlant")
-       // this._klant = new KlantClass(naam, straat, nummer, postCode, stad)
+        this._klant = new KlantClass(naam, straat, nummer, postCode, stad)
         this._klantService
-            .addKlant(klant);
+            .addKlant(naam, straat, nummer, postCode, stad);
 
     }
 

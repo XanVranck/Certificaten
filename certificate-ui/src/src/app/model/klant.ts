@@ -1,5 +1,6 @@
+import {Adres} from '../model/adres'
+
 export interface Klant{
-    id:number;
     naam:string;
     straat:string;
     nummer:string;
