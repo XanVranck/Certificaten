@@ -11,9 +11,9 @@ import {Router} from "@angular/router";
             <form class="ccform">
                 <div class="ccfield-prepend">
                     <span class="ccform-addon"><i class="fa fa-users fa-2x"></i></span>
-                    <input list="customers" name="customer" placeholder="Klanten" class="ccformfield" required>
-                    <datalist id="customers">
-                        <option *ngFor="let klant of _klanten" (click)="selectKlant(klant)" value="{{Klant.naam}}">
+                    <input list="getKlanten" name="klant" placeholder="Klanten" class="ccformfield" required>
+                    <datalist id="customers" *ngFor="let klant of _klanten">
+                        <option (click)="selectKlant(klant)" value="{{Klant.naam}}">
                     </datalist>
                 </div>
                 <div class="ccfield-prepend">
@@ -84,7 +84,6 @@ export class klantenComponent {
     ngOnInit(){
         this._klantService
             .getKlanten()
-            .subscribe(klanten => this._klanten = klanten);
-            console.log("on init");
+            .subscribe(klanten => this._klanten = klanten)
     }
 }

@@ -7,6 +7,7 @@ import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 import {AppComponent} from './app.component';
 import { klantenComponent } from './klanten/klanten.component';
+import {KlantService} from './service/klant.service';
 import {routes} from './app.routes';
 
 
@@ -15,7 +16,7 @@ import {routes} from './app.routes';
     bootstrap: [AppComponent],
     declarations: [
         AppComponent,
-        klantenComponent
+        klantenComponent,
     ],
     imports: [
         BrowserModule,
@@ -25,7 +26,7 @@ import {routes} from './app.routes';
         RouterModule.forRoot(routes)
     ],
     providers: [
-       //services hier
+       KlantService,
         {provide: LocationStrategy, useClass: HashLocationStrategy}
     ]
     })
