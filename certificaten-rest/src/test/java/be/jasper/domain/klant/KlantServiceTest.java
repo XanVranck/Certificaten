@@ -21,7 +21,7 @@ public class KlantServiceTest {
 
     @Test
     public void addKlant_MoetVerwijzenNaarKlantRepoAddKlantMethode() throws Exception {
-        Klant klant = new Klant("Xan", new AdresTestBuilder().build());
+        Klant klant = new Klant("Xan", "Schoolstraat", "78", "1745", "Opwijk");
 
         klantService.addKlant(klant);
 

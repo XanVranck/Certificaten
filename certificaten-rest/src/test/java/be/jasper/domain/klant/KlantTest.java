@@ -19,18 +19,9 @@ public class KlantTest {
 
     @Test
     public void createKlant_getNaam_ShouldReturnXan() throws Exception {
-        klant = new Klant("Xan", new Adres("Schoolstraat", "78", "1745", "Opwijk"));
+        klant = new Klant("Xan", "Schoolstraat", "78", "1745", "Opwijk");
 
         assertThat(klant.getNaam()).isEqualTo("Xan");
-    }
-
-
-    @Test
-    public void createKlant_getAdresShouldReturnAdres() throws Exception {
-        Adres adres = new Adres("Schoolstraat", "78", "1745", "Opwijk");
-        klant = new Klant("Xan", adres);
-
-        assertThat(klant.getAdres()).isEqualTo(adres);
     }
 
     @Test

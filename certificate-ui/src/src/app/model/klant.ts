@@ -1,5 +1,3 @@
-import {Adres} from '../model/adres'
-
 export interface Klant{
     naam:string;
     straat:string;

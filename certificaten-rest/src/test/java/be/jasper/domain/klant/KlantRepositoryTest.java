@@ -38,8 +38,8 @@ public class KlantRepositoryTest extends SpringIntegrationTest {
                 .withPostCode("9200")
                 .withStad("Lebbeke")
                 .build();
-        xan = new Klant("Xan", adresXan);
-        nena = new Klant("Nena", adresNena);
+        xan = new Klant("Xan", "Schoolstraat", "78", "1745", "Opwijk");
+        nena = new Klant("Nena", "Bremen", "8", "9200", "Dmd");
 
        klantService.addKlant(xan);
        klantService.addKlant(nena);
@@ -53,7 +53,7 @@ public class KlantRepositoryTest extends SpringIntegrationTest {
                 .withPostCode("2000")
                 .withStad("Antwerpen")
                 .build();
-        Klant jasper = new Klant("Jaspe", adresJasper);
+        Klant jasper = new Klant("Jaspe", "Schoolstraat", "78", "1745", "Opwijk");
 
         klantService.addKlant(jasper);
 

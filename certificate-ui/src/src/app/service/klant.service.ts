@@ -36,6 +36,6 @@ export class KlantService{
         //new KlantClass(naam,straat, nummer, postCode, stad);
         console.log("klantservice add klant", this._klant)
         this._http
-            .post(this._klantUrl, {naam,straat, nummer, postCode, stad})
+            .post(this._klantUrl, {naam, straat, nummer, postCode, stad})
     }
 }
