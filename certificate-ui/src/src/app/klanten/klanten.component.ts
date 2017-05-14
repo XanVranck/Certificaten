@@ -78,11 +78,11 @@ export class klantenComponent implements OnInit {
     }
 
     addKlant(naam:string, straat:string, nummer:string, postCode:string, stad:string){
-        console.log("addKlant")
         this._klant = new KlantClass(naam, straat, nummer, postCode, stad)
         this._klantService
-            .addKlant(naam, straat, nummer, postCode, stad);
-
+            .addKlant(naam, straat, nummer, postCode, stad)
+            .subscribe();
+        this.ngOnInit();
     }
 
     get klanten():Array<Klant>{

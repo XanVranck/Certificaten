@@ -33,9 +33,7 @@ export class KlantService{
                         "postCode":postCode,
                         "stad":stad
                     }
-        //new KlantClass(naam,straat, nummer, postCode, stad);
-        console.log("klantservice add klant", this._klant)
-        this._http
-            .post(this._klantUrl, {naam, straat, nummer, postCode, stad})
+        return this._http
+            .post(this._klantUrl, this._klant)    
     }
 }
