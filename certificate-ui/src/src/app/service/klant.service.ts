@@ -12,7 +12,7 @@ import 'rxjs/Rx';
 @Injectable()
 export class KlantService{
     private _klantUrl: string;
-    private _klant:Klant;
+    private _klant:KlantClass;
     private _adres:Adres;
     
     constructor(private _http:Http){
@@ -27,7 +27,7 @@ export class KlantService{
 
     addKlant(naam:string, straat:string, nummer:string, postCode:string, stad:string){
         this._klant = { 
-                        "id":null,
+                        "id":undefined,
                         "naam":naam,
                         "straat":straat,
                         "nummer":nummer,

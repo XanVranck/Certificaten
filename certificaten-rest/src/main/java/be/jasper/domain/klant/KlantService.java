@@ -28,7 +28,8 @@ public class KlantService {
     }
 
     public List<KlantDTO> getKlantenDTO() {
-        return klantRepository.getKlanten().stream()
+        return klantRepository.getKlanten()
+                .stream()
                 .map(klant -> new KlantDTO(klant.getKlantID(), klant.getNaam()))
                 .collect(Collectors.toList());
     }

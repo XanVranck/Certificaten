@@ -17,7 +17,7 @@ import {Router} from "@angular/router";
                     </datalist>                  
                 </div>
                 <div class="ccfield-prepend">
-                    <input class="ccbtn" type="submit" value="Submit">
+                    <input class="ccbtn" type="submit" value="Bekijk order(s)">
                 </div>
             </form>
 
@@ -45,7 +45,7 @@ import {Router} from "@angular/router";
                     <input #stadKl class="ccformfield" type="text" placeholder="Stad" required>
                 </div>
                 <div class="ccfield-prepend">
-                    <input class="ccbtn" type="submit" (click)="addKlant(naamKl.value, straatKl.value, nummerKl.value, postCodeKl.value, stadKl.value)" value="Submit">
+                    <input class="ccbtn" type="submit" (click)="addKlant(naamKl.value, straatKl.value, nummerKl.value, postCodeKl.value, stadKl.value)" value="Voeg klant toe">
                 </div>
             </form>
         </div>
@@ -69,7 +69,7 @@ export class klantenComponent implements OnInit {
 
     selectKlant(klant:Klant){
         this.selectedKlant = klant;
-        //localStorage.setItem("klantID", klant.id);
+        localStorage.setItem("klantId", klant.id.toString());
         this.router.navigate(['./order']);
     }
 
@@ -82,7 +82,7 @@ export class klantenComponent implements OnInit {
         this._klantService
             .addKlant(naam, straat, nummer, postCode, stad)
             .subscribe();
-            alert("klant opgeslaan!")
+            alert("klant opgeslagen!")
        }
         this.ngOnInit();
     }

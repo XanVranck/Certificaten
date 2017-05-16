@@ -1,6 +1,7 @@
 import {Adres} from '../model/adres'
 
 export interface Klant{
+    id:number;
     naam:string;
     straat:string;
     nummer:string;
@@ -9,7 +10,7 @@ export interface Klant{
 }
 
 export class KlantClass implements Klant {
-    id: number;
+    id:number;
     naam: string;
     straat: string;
     nummer: string;

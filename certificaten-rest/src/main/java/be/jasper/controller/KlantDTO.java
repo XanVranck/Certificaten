@@ -1,8 +1,8 @@
 package be.jasper.controller;
 
-/**
- * Created by xanv on 16/05/2017.
- */
+import javax.inject.Named;
+
+@Named
 public class KlantDTO {
     private int klantId;
     private String naam;
