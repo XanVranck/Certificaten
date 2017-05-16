@@ -12,9 +12,6 @@ public class KlantService {
     @Inject
     private KlantRepository klantRepository;
 
-    @Inject
-    private KlantDTO klantDTO;
-
     public void addKlant(Klant klant) {
         klantRepository.addKlant(klant);
     }

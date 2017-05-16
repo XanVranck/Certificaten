@@ -1,8 +1,5 @@
 package be.jasper.controller;
 
-import javax.inject.Named;
-
-@Named
 public class KlantDTO {
     private int klantId;
     private String naam;
