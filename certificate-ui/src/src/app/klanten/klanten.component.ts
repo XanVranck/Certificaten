@@ -78,10 +78,12 @@ export class klantenComponent implements OnInit {
     }
 
     addKlant(naam:string, straat:string, nummer:string, postCode:string, stad:string){
-        this._klant = new KlantClass(naam, straat, nummer, postCode, stad)
+       if(naam !== "" && straat !== "" && nummer !== "" && postCode !== "" && stad !== ""){
         this._klantService
             .addKlant(naam, straat, nummer, postCode, stad)
             .subscribe();
+            alert("klant opgeslaan!")
+       }
         this.ngOnInit();
     }
 

@@ -21,19 +21,6 @@ public class KlantController {
     @Inject
     private KlantService klantService;
 
-//    @RequestMapping(method = POST)
-//        @CrossOrigin(origins = "http://localhost:4200")
-//    @ResponseBody
-//    public void addKlant(@RequestParam(value="naam") String naam,
-//                         @RequestParam(value="straat") String straat,
-//                         @RequestParam (value="nummer") String nummer,
-//                         @RequestParam (value="postCode") String postCode,
-//                         @RequestParam (value="stad") String stad){
-//        Adres adres = new Adres(straat, nummer, postCode, stad);
-//        Klant klant = new Klant(naam, adres);
-//        klantService.addKlant(klant);
-//    }
-
     @RequestMapping(method = POST)
     @CrossOrigin(origins = "http://localhost:4200")
     @ResponseBody

@@ -11,10 +11,13 @@ public class KlantService {
 
     public void addKlant(Klant klant) {
         klantRepository.addKlant(klant);
-       // klantRepository.addAdres(klant.getAdres());
     }
 
     public List<Klant> getKlanten() {
         return klantRepository.getKlanten();
+    }
+
+    public Klant findKlantById(int id) {
+        return klantRepository.findKlantById(id);
     }
 }
