@@ -31,7 +31,7 @@ public class KlantController {
     @RequestMapping(method = GET)
     @CrossOrigin(origins = "http://localhost:4200")
     @ResponseBody
-    public List<Klant> getKlanten(){
-        return klantService.getKlanten();
+    public List<KlantDTO> getKlanten(){
+        return klantService.getKlantenDTO();
     }
 }

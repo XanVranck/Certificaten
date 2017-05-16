@@ -27,6 +27,7 @@ export class KlantService{
 
     addKlant(naam:string, straat:string, nummer:string, postCode:string, stad:string){
         this._klant = { 
+                        "id":null,
                         "naam":naam,
                         "straat":straat,
                         "nummer":nummer,

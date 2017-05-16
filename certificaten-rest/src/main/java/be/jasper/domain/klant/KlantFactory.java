@@ -9,6 +9,7 @@ import javax.inject.Named;
 public class KlantFactory {
     @Inject
     private KlantService klantService;
+
     public KlantFactory() {
     }
 
