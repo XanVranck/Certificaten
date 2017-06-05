@@ -22,12 +22,12 @@ export class KlantService{
     getKlanten():Observable<Array<Klant>>{
         return this._http
                     .get(this._klantUrl)
-                    .map((response:Response)=> response.json())                    
+                    .map((response:Response)=> response.json())           
     }
 
     addKlant(naam:string, straat:string, nummer:string, postCode:string, stad:string){
         this._klant = { 
-                        "id":undefined,
+                        "klantId":undefined,
                         "naam":naam,
                         "straat":straat,
                         "nummer":nummer,

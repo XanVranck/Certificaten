@@ -3,6 +3,7 @@ package be.jasper.domain.klant;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
 
 @Named
@@ -26,4 +27,13 @@ public class KlantRepository {
     public Klant findKlantById(int klantId){
         return entityManager.find(Klant.class, klantId);
     }
+
+    public Klant findKlantByNaam(String naam) {
+        Query query = entityManager.createQuery("select k FROM Klant k WHERE naam=:naam");
+        query.setParameter("naam", naam);
+        return (Klant) query.getSingleResult();
+
+    }
+
+
 }

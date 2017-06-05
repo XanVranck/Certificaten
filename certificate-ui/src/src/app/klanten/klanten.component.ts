@@ -11,13 +11,13 @@ import {Router} from "@angular/router";
             <form class="ccform">
                 <div class="ccfield-prepend">
                     <span class="ccform-addon"><i class="fa fa-users fa-2x"></i></span>
-                 <input list="customers" name="klant" placeholder="Klanten" class="ccformfield" required>
-                     <datalist id="customers">
-                        <option *ngFor="let klant of klanten" (click)="selectKlant(klant)" value="{{klant.naam}}">{{klant.naam}}</option>
-                    </datalist>                  
+                 <input list="customers" name="klant" [(ngModel)]="klant" placeholder="Klanten" class="ccformfield" required>
+                     <dataList id="customers" >
+                        <option id="kl" *ngFor="let klant of klanten" ng-change="selectKlant(klant)" value="{{klant.naam}}">{{klant.id}}</option>
+                    </dataList>                  
                 </div>
                 <div class="ccfield-prepend">
-                    <input class="ccbtn" type="submit" value="Bekijk order(s)">
+                    <input class="ccbtn" type="submit" (click)="goToOrders(klant)" value="Bekijk order(s)">
                 </div>
             </form>
 
@@ -54,7 +54,8 @@ import {Router} from "@angular/router";
 
 export class klantenComponent implements OnInit {
     private _klant:Klant;
-    private selectedKlant: Klant;
+    private _klantId:number;
+    private selectedKlant: number;
     private _klanten: Array<Klant>;
     private _naam: string;
     private _straat:string;
@@ -68,13 +69,25 @@ export class klantenComponent implements OnInit {
     }
 
     selectKlant(klant:Klant){
-        this.selectedKlant = klant;
-        localStorage.setItem("klantId", klant.id.toString());
-        this.router.navigate(['./order']);
+        //this.selectedKlant = (<HTMLInputElement>document.getElementById("customers")).toString();
+        
+        localStorage.setItem("klantId", klant.klantId.toString());
+        localStorage.setItem("Klant", klant.naam)
     }
 
     deselectKlant(){
         this.selectedKlant = null;
+    }
+
+    goToOrders(klant:Klant){
+
+        //console.log("klantOrder", this.selectedKlant);            
+        console.log("id", localStorage.getItem("klantId"))
+        console.log("klant", localStorage.getItem("Klant"))
+        console.log("gotToOrdersKlant", klant.naam)
+        console.log("goToOrdersKlantId", klant.klantId)
+       // console.log((<HTMLInputElement>document.getElementById("kl")))
+       // this.router.navigate(['./order']);             
     }
 
     addKlant(naam:string, straat:string, nummer:string, postCode:string, stad:string){
@@ -88,6 +101,7 @@ export class klantenComponent implements OnInit {
     }
 
     get klanten():Array<Klant>{
+        console.log("klanten", this._klanten)                        
         return this._klanten
     }
 

@@ -33,6 +33,12 @@ public class KlantServiceTest {
         klantService.getKlanten();
 
         verify(klantRepositoryMock).getKlanten();
+    }
 
+    @Test
+    public void getKlantByNaam_MoetVerwijzenNaarKlantRepoGetKlantByNaamMethode() throws Exception {
+        klantService.findKlantByNaam("Xan");
+
+        verify(klantRepositoryMock).findKlantByNaam("Xan");
     }
 }

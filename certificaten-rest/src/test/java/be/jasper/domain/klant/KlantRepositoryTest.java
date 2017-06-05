@@ -61,6 +61,26 @@ public class KlantRepositoryTest extends SpringIntegrationTest {
     }
 
     @Test
+    public void getKlantByNaam_ShouldReturn_Klant() throws Exception {
+        assertThat(klantRepository.findKlantByNaam("Xan")).isEqualTo(xan);
+    }
+
+    @Test
+    public void addKlant_getKlantByNaam_ShouldReturnKlant() throws Exception {
+        Klant jasper = new Klant("Jaspe", "Schoolstraat", "78", "1745", "Opwijk");
+
+        klantService.addKlant(jasper);
+
+        assertThat(klantRepository.findKlantByNaam("Jaspe")).isEqualTo(jasper);
+
+    }
+
+    @Test
+    public void getKlanByNaam_ShouldReturn_Nena() throws Exception {
+        assertThat(klantRepository.findKlantByNaam("Nena")).isEqualTo(nena);
+    }
+
+    @Test
     public void getKlanten() throws Exception {
         assertThat(klantRepository.getKlanten()).contains(xan, nena);
     }

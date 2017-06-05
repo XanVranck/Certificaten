@@ -24,6 +24,10 @@ public class KlantService {
         return klantRepository.findKlantById(id);
     }
 
+    public Klant findKlantByNaam(String naam) {
+        return (Klant) klantRepository.findKlantByNaam(naam);
+    }
+
     public List<KlantDTO> getKlantenDTO() {
         return klantRepository.getKlanten()
                 .stream()

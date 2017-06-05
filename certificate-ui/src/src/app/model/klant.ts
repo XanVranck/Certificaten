@@ -1,7 +1,7 @@
 import {Adres} from '../model/adres'
 
 export interface Klant{
-    id:number;
+    klantId:number;
     naam:string;
     straat:string;
     nummer:string;
@@ -10,7 +10,7 @@ export interface Klant{
 }
 
 export class KlantClass implements Klant {
-    id:number;
+    klantId:number;
     naam: string;
     straat: string;
     nummer: string;
@@ -18,7 +18,7 @@ export class KlantClass implements Klant {
     stad: string;
     
     constructor(naam:string, straat:string, nummer:string, postCode:string, stad:string){
-        this.id = undefined;
+        this.klantId = undefined;
         this.naam = naam;
         this.straat = straat;
         this.nummer = nummer

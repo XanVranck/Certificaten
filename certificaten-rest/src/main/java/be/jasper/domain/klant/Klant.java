@@ -16,7 +16,7 @@ public class Klant {
     @Column(name = "KLANT_ID")
     private  int klantID;
 
-    @Column(name = "NAAM")
+    @Column(name = "NAAM", unique = true)
     private String naam;
 
     @Column(name = "STRAAT")
