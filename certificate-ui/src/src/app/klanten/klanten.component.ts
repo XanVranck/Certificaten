@@ -55,7 +55,6 @@ import {Router} from "@angular/router";
 export class klantenComponent implements OnInit {
     private _klant:Klant;
     private _klantId:number;
-    private selectedKlant: number;
     private _klanten: Array<Klant>;
     private _naam: string;
     private _straat:string;
@@ -65,29 +64,10 @@ export class klantenComponent implements OnInit {
 
     constructor(private router: Router, private _klantService: KlantService){
         this._klanten = [];
-        this.selectedKlant=undefined;
-    }
-
-    selectKlant(klant:Klant){
-        //this.selectedKlant = (<HTMLInputElement>document.getElementById("customers")).toString();
-        
-        localStorage.setItem("klantId", klant.klantId.toString());
-        localStorage.setItem("Klant", klant.naam)
-    }
-
-    deselectKlant(){
-        this.selectedKlant = null;
     }
 
     goToOrders(klant:Klant){
-
-        //console.log("klantOrder", this.selectedKlant);            
-        console.log("id", localStorage.getItem("klantId"))
-        console.log("klant", localStorage.getItem("Klant"))
-        console.log("gotToOrdersKlant", klant.naam)
-        console.log("goToOrdersKlantId", klant.klantId)
-       // console.log((<HTMLInputElement>document.getElementById("kl")))
-       // this.router.navigate(['./order']);             
+       this.router.navigate(['./orders']);             
     }
 
     addKlant(naam:string, straat:string, nummer:string, postCode:string, stad:string){
@@ -100,8 +80,7 @@ export class klantenComponent implements OnInit {
         this.ngOnInit();
     }
 
-    get klanten():Array<Klant>{
-        console.log("klanten", this._klanten)                        
+    get klanten():Array<Klant>{                   
         return this._klanten
     }
 

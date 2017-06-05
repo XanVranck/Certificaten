@@ -7,6 +7,7 @@ import {NgModule} from '@angular/core';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 import {AppComponent} from './app.component';
+import {ordersComponent} from './orders/orders.component'
 import { klantenComponent } from './klanten/klanten.component';
 import {KlantService} from './service/klant.service';
 import {routes} from './app.routes';
@@ -18,6 +19,7 @@ import {routes} from './app.routes';
     declarations: [
         AppComponent,
         klantenComponent,
+        ordersComponent,
     ],
     imports: [
         BrowserModule,
