@@ -25,7 +25,7 @@ public class KlantService {
     }
 
     public Klant findKlantByNaam(String naam) {
-        return (Klant) klantRepository.findKlantByNaam(naam);
+        return klantRepository.findKlantByNaam(naam);
     }
 
     public List<KlantDTO> getKlantenDTO() {

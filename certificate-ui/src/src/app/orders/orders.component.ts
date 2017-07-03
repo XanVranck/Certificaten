@@ -149,7 +149,10 @@ import {Component, OnInit} from '@angular/core';
 })
 
 export class ordersComponent implements OnInit {
-        ngOnInit(){
 
+   // constructor(private _orderService:OrderService)
+
+    ngOnInit(){
+            
     }
 }

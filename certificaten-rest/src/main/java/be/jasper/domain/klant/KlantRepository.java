@@ -16,10 +16,6 @@ public class KlantRepository {
         entityManager.persist(klant);
     }
 
-    public void addAdres(Adres adres) {
-        entityManager.persist(adres);
-    }
-
     public List<Klant> getKlanten() {
         return entityManager.createQuery("select k from Klant k", Klant.class).getResultList();
     }

@@ -19,7 +19,7 @@ public class KlantTest {
 
     @Test
     public void createKlant_getNaam_ShouldReturnXan() throws Exception {
-        klant = new Klant("Xan", "Schoolstraat", "78", "1745", "Opwijk");
+        klant = new Klant("Xan");
 
         assertThat(klant.getNaam()).isEqualTo("Xan");
     }

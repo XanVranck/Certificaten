@@ -19,45 +19,14 @@ public class Klant {
     @Column(name = "NAAM", unique = true)
     private String naam;
 
-    @Column(name = "STRAAT")
-    private String straat;
-
-    @Column(name = "NUMMER")
-    private String nummer;
-
-    @Column(name = "POSTCODE")
-    private String postCode;
-
-    @Column(name = "STAD")
-    private String stad;
-
     @OneToMany(cascade = CascadeType.ALL)
     private List<Order> orders = new ArrayList<>();
 
 
-    public Klant(String naam, String straat, String nummer, String postCode, String stad) {
+    public Klant(String naam) {
         this.naam = naam;
-        this.straat = straat;
-        this.nummer = nummer;
-        this.postCode = postCode;
-        this.stad = stad;
     }
 
-    public String getStraat() {
-        return straat;
-    }
-
-    public String getNummer() {
-        return nummer;
-    }
-
-    public String getPostCode() {
-        return postCode;
-    }
-
-    public String getStad() {
-        return stad;
-    }
 
     public Klant() {
     }

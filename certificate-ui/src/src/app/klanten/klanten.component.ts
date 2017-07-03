@@ -29,23 +29,7 @@ import {Router} from "@angular/router";
                     <input #naamKl class="ccformfield" type="text" placeholder="Naam" required>
                 </div>
                 <div class="ccfield-prepend">
-                    <span class="ccform-addon"><i class="fa fa-id-card-o fa-2x"></i></span>
-                    <input #straatKl class="ccformfield" type="text" placeholder="Straat" required>
-                </div>
-                <div class="ccfield-prepend">
-                    <span class="ccform-addon"><i class="fa fa-sort-numeric-asc fa-2x"></i></span>
-                    <input #nummerKl class="ccformfield" type="text" placeholder="Huisnummer" required>
-                </div>
-                <div class="ccfield-prepend">
-                    <span class="ccform-addon"><i class="fa fa-info fa-2x"></i></span>
-                    <input #postCodeKl class="ccformfield" type="text" placeholder="Postcode" required>
-                </div>
-                <div class="ccfield-prepend">
-                    <span class="ccform-addon"><i class="fa fa-building fa-2x"></i></span>
-                    <input #stadKl class="ccformfield" type="text" placeholder="Stad" required>
-                </div>
-                <div class="ccfield-prepend">
-                    <input class="ccbtn" type="submit" (click)="addKlant(naamKl.value, straatKl.value, nummerKl.value, postCodeKl.value, stadKl.value)" value="Voeg klant toe">
+                    <input class="ccbtn" type="submit" (click)="addKlant(naamKl.value)" value="Voeg klant toe">
                 </div>
             </form>
         </div>
@@ -57,10 +41,6 @@ export class klantenComponent implements OnInit {
     private _klantId:number;
     private _klanten: Array<Klant>;
     private _naam: string;
-    private _straat:string;
-    private _nummer:string;
-    private _postCode:string;
-    private _stad:string;
 
     constructor(private router: Router, private _klantService: KlantService){
         this._klanten = [];
@@ -70,10 +50,10 @@ export class klantenComponent implements OnInit {
        this.router.navigate(['./orders']);             
     }
 
-    addKlant(naam:string, straat:string, nummer:string, postCode:string, stad:string){
-       if(naam !== "" && straat !== "" && nummer !== "" && postCode !== "" && stad !== ""){
+    addKlant(naam:string){
+       if(naam !== ""){
         this._klantService
-            .addKlant(naam, straat, nummer, postCode, stad)
+            .addKlant(naam)
             .subscribe();
             alert("klant opgeslagen!")
        }

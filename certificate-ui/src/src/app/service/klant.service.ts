@@ -25,14 +25,10 @@ export class KlantService{
                     .map((response:Response)=> response.json())           
     }
 
-    addKlant(naam:string, straat:string, nummer:string, postCode:string, stad:string){
+    addKlant(naam:string){
         this._klant = { 
                         "klantId":undefined,
-                        "naam":naam,
-                        "straat":straat,
-                        "nummer":nummer,
-                        "postCode":postCode,
-                        "stad":stad
+                        "naam":naam
                     }
         return this._http
             .post(this._klantUrl, this._klant)    

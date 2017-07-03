@@ -25,21 +25,12 @@ public class KlantRepositoryTest extends SpringIntegrationTest {
     private KlantService klantService;
 
     private Klant xan, nena;
-    private Adres adresXan, adresNena;
 
-    private AdresTestBuilder adresTestBuilder = new AdresTestBuilder();
 
     @Before
     public void setUp() throws Exception {
-        adresXan = adresTestBuilder.build();
-        adresNena = adresTestBuilder
-                .withStraat("Bremenhulleken")
-                .withNummer("8")
-                .withPostCode("9200")
-                .withStad("Lebbeke")
-                .build();
-        xan = new Klant("Xan", "Schoolstraat", "78", "1745", "Opwijk");
-        nena = new Klant("Nena", "Bremen", "8", "9200", "Dmd");
+        xan = new Klant("Xan");
+        nena = new Klant("Nena");
 
        klantService.addKlant(xan);
        klantService.addKlant(nena);
@@ -47,13 +38,7 @@ public class KlantRepositoryTest extends SpringIntegrationTest {
 
     @Test
     public void addKlant() throws Exception {
-        Adres adresJasper = adresTestBuilder
-                .withStraat("AntwerpenStraat")
-                .withNummer("25")
-                .withPostCode("2000")
-                .withStad("Antwerpen")
-                .build();
-        Klant jasper = new Klant("Jaspe", "Schoolstraat", "78", "1745", "Opwijk");
+        Klant jasper = new Klant("Jasper");
 
         klantService.addKlant(jasper);
 
@@ -67,11 +52,11 @@ public class KlantRepositoryTest extends SpringIntegrationTest {
 
     @Test
     public void addKlant_getKlantByNaam_ShouldReturnKlant() throws Exception {
-        Klant jasper = new Klant("Jaspe", "Schoolstraat", "78", "1745", "Opwijk");
+        Klant jasper = new Klant("Jasper");
 
         klantService.addKlant(jasper);
 
-        assertThat(klantRepository.findKlantByNaam("Jaspe")).isEqualTo(jasper);
+        assertThat(klantRepository.findKlantByNaam("Jasper")).isEqualTo(jasper);
 
     }
 
