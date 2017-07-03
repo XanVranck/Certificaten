@@ -3,12 +3,12 @@ package be.jasper.domain.certificaat;
 import be.jasper.controller.CertificaatDTO;
 import be.jasper.domain.order.Order;
 import be.jasper.domain.order.OrderRepository;
+import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 import java.util.List;
 
-@Named
+@Service
 public class CertificaatService {
     @Inject
     private CertificaatRepository certificaatRepository;

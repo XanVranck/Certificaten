@@ -1,13 +1,13 @@
 package be.jasper.domain.klant;
 
 import be.jasper.controller.KlantDTO;
+import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Named
+@Service
 public class KlantService {
     @Inject
     private KlantRepository klantRepository;

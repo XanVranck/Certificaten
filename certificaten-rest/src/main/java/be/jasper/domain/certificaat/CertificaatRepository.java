@@ -1,11 +1,12 @@
 package be.jasper.domain.certificaat;
 
-import javax.inject.Named;
+import org.springframework.stereotype.Repository;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-@Named
+@Repository
 public class CertificaatRepository {
     @PersistenceContext
     private EntityManager entityManager;

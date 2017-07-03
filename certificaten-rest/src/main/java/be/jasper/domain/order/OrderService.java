@@ -3,12 +3,12 @@ package be.jasper.domain.order;
 import be.jasper.controller.OrderDTO;
 import be.jasper.domain.klant.Klant;
 import be.jasper.domain.klant.KlantRepository;
+import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 import java.util.List;
 
-@Named
+@Service
 public class OrderService {
     @Inject
     private OrderFactory orderFactory;
