@@ -24,4 +24,12 @@ public class KlantDTO {
     public void setNaam(String naam) {
         this.naam = naam;
     }
+
+    @Override
+    public String toString() {
+        return "KlantDTO{" +
+                "klantId=" + klantId +
+                ", naam='" + naam + '\'' +
+                '}';
+    }
 }

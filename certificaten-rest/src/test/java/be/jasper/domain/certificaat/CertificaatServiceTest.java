@@ -1,5 +1,6 @@
 package be.jasper.domain.certificaat;
 
+import be.jasper.domain.order.OrderRepository;
 import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -7,7 +8,6 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
-import static org.mockito.Matchers.refEq;
 import static org.mockito.Mockito.verify;
 
 public class CertificaatServiceTest {
@@ -18,19 +18,17 @@ public class CertificaatServiceTest {
     private CertificaatService certificaatService;
 
     @Mock
-    private CertificaatRepository certificaatRepository;
+    private CertificaatRepository certificaatRepositoryMock;
+
+    @Mock
+    private OrderRepository orderRepositoryMock;
+
+    @Mock
+    private CertificaatFactory certificaatFactory;
 
     @Test
-    public void addCustomer() throws Exception {
-        Certificaat certificaat=new Certificaat("50", "1",50000);
-        certificaatRepository.addCertificate(certificaat);
-        verify(certificaatRepository).addCertificate(refEq(certificaat));
-    }
-
-
-    @Test
-    public void getCustomers() throws Exception{
-        certificaatService.getCertificates();
-        verify(certificaatRepository).getCertificats();
+    public void getCertificaten() throws Exception{
+        certificaatService.getCertificaten();
+        verify(certificaatRepositoryMock).getCertificaten();
     }
 }

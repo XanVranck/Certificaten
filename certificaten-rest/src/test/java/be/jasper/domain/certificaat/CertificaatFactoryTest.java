@@ -13,7 +13,7 @@ public class CertificaatFactoryTest {
 
     @Test
     public void creatCertificaat() throws Exception{
-        CertificaatDTO certificaatDTO = new CertificaatDTO(CERTIFICAAT_NUMBER, CERTIFICAAT_DATUM, SPECIFIEK_TONNAGE, ORDER_ID);
+        CertificaatDTO certificaatDTO = new CertificaatDTO(ORDER_ID, CERTIFICAAT_NUMBER, CERTIFICAAT_DATUM, SPECIFIEK_TONNAGE);
         Certificaat certificaat = new CertificaatFactory().createCertificaat(certificaatDTO);
 
         assertThat(certificaat).isEqualToComparingFieldByField(new Certificaat(CERTIFICAAT_NUMBER, CERTIFICAAT_DATUM,SPECIFIEK_TONNAGE));

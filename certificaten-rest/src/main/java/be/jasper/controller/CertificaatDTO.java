@@ -4,16 +4,16 @@ package be.jasper.controller;
  * Created by xanv on 11/05/2017.
  */
 public class CertificaatDTO {
+    private int orderID;
     private String certificaatNummer;
     private String certificaatDatum;
     private int specifiekTonnage;
-    private int orderID;
 
-    public CertificaatDTO(String certificaatNummer, String certificaatDatum, int specifiekTonnage, int orderID) {
+    public CertificaatDTO(int orderID, String certificaatNummer, String certificaatDatum, int specifiekTonnage) {
+        this.orderID = orderID;
         this.certificaatNummer = certificaatNummer;
         this.certificaatDatum = certificaatDatum;
         this.specifiekTonnage = specifiekTonnage;
-        this.orderID = orderID;
     }
 
     public String getCertificaatNummer() {

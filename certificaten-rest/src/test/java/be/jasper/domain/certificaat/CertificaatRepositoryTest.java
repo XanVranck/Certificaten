@@ -30,13 +30,13 @@ public class CertificaatRepositoryTest extends SpringIntegrationTest {
     @Test
     public void addCertificaat() throws Exception {
         Certificaat certificaat = new Certificaat("2", "1", 6541);
-        certificaatRepository.addCertificate(certificaat);
-        Assertions.assertThat(certificaatRepository.getCertificats()).contains(one, two, certificaat);
+        certificaatRepository.addCertificaat(certificaat);
+        Assertions.assertThat(certificaatRepository.getCertificaten()).contains(one, two, certificaat);
     }
 
     @Test
     public void getKlanten() throws Exception {
-        Assertions.assertThat(certificaatRepository.getCertificats()).contains(one, two);
+        Assertions.assertThat(certificaatRepository.getCertificaten()).contains(one, two);
     }
 
     @After

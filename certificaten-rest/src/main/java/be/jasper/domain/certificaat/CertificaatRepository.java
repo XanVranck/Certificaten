@@ -11,11 +11,11 @@ public class CertificaatRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public void addCertificate(Certificaat certificaat) {
+    public void addCertificaat(Certificaat certificaat) {
         entityManager.persist(certificaat);
     }
 
-    public List<Certificaat> getCertificats() {
+    public List<Certificaat> getCertificaten() {
         return entityManager.createQuery("select c from Certificaat c", Certificaat.class).getResultList();
     }
 }

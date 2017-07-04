@@ -61,7 +61,7 @@ public class KlantRepositoryTest extends SpringIntegrationTest {
     }
 
     @Test
-    public void getKlanByNaam_ShouldReturn_Nena() throws Exception {
+    public void getKlantByNaam_ShouldReturn_Nena() throws Exception {
         assertThat(klantRepository.findKlantByNaam("Nena")).isEqualTo(nena);
     }
 

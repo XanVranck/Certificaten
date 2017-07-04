@@ -22,14 +22,14 @@ public class CertificaatController {
                                @RequestParam (value = "certificaatDatum") String certificaatDatum,
                                @RequestParam (value = "specifiekTonnage") int specifiekTonnage,
                                @RequestParam (value = "orderID") int orderID){
-        CertificaatDTO certificaat = new CertificaatDTO(certificaatNummer, certificaatDatum, specifiekTonnage, orderID);
+        CertificaatDTO certificaat = new CertificaatDTO(orderID, certificaatNummer, certificaatDatum, specifiekTonnage);
         certificaatService.addCertificaat(certificaat);
     }
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     public List<Certificaat> getCertificaten(){
-        return certificaatService.getCertificates();
+        return certificaatService.getCertificaten();
     }
 
 
