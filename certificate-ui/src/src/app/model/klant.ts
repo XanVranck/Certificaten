@@ -1,16 +1,14 @@
-import {Adres} from '../model/adres'
-
 export interface Klant{
-    klantId:number;
+    klantId:string;
     naam:string;
 }
 
 export class KlantClass implements Klant {
-    klantId:number;
+    klantId:string;
     naam: string;
 
-    constructor(naam:string, straat:string, nummer:string, postCode:string, stad:string){
-        this.klantId = undefined;
+    constructor(klantId:string, naam:string){
+        this.klantId = klantId;
         this.naam = naam;
     }
 

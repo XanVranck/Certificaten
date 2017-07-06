@@ -8,14 +8,14 @@ public class OrderDTO {
     private String aankoopOrderNummer;
     private String specificatie;
     private int totaal;
-    private int klantId;
+    private String klantNaam;
 
-    public OrderDTO(String werkOrderNummer, String aankoopOrderNummer, String specificatie, int totaal, int klantId) {
+    public OrderDTO(String werkOrderNummer, String aankoopOrderNummer, String specificatie, int totaal, String klantNaam) {
         this.werkOrderNummer = werkOrderNummer;
         this.aankoopOrderNummer = aankoopOrderNummer;
         this.specificatie = specificatie;
         this.totaal = totaal;
-        this.klantId = klantId;
+        this.klantNaam = klantNaam;
     }
 
     public String getWerkOrderNummer() {
@@ -34,8 +34,12 @@ public class OrderDTO {
         return totaal;
     }
 
-    public int getKlantId() {
-        return klantId;
+    public String getKlantNaam() {
+        return klantNaam;
+    }
+
+    public void setKlantNaam(String klantNaam) {
+        this.klantNaam = klantNaam;
     }
 
     public void setWerkOrderNummer(String werkOrderNummer) {
@@ -54,7 +58,4 @@ public class OrderDTO {
         this.totaal = totaal;
     }
 
-    public void setKlantId(int klantId) {
-        this.klantId = klantId;
-    }
 }

@@ -11,13 +11,13 @@ import {Router} from "@angular/router";
             <form class="ccform">
                 <div class="ccfield-prepend">
                     <span class="ccform-addon"><i class="fa fa-users fa-2x"></i></span>
-                 <input list="customers" name="klant" [(ngModel)]="klant" placeholder="Klanten" class="ccformfield" required>
+                 <input #kl list="customers" name="klant"  placeholder="Klanten" class="ccformfield" required>
                      <dataList id="customers" >
-                        <option id="kl" *ngFor="let klant of klanten" ng-change="selectKlant(klant)" value="{{klant.naam}}">{{klant.id}}</option>
+                        <option id="kl" (ngModel)="klanten" *ngFor="let klant of klanten" value="{{klant.naam}}">{{klant.klantId}}</option>/>
                     </dataList>                  
                 </div>
                 <div class="ccfield-prepend">
-                    <input class="ccbtn" type="submit" (click)="goToOrders(klant)" value="Bekijk order(s)">
+                    <input class="ccbtn" type="submit" (click)="goToOrders(kl.value)" value="Bekijk order(s)">
                 </div>
             </form>
 
@@ -37,17 +37,15 @@ import {Router} from "@angular/router";
 })
 
 export class klantenComponent implements OnInit {
-    private _klant:Klant;
-    private _klantId:number;
     private _klanten: Array<Klant>;
-    private _naam: string;
 
     constructor(private router: Router, private _klantService: KlantService){
         this._klanten = [];
     }
 
-    goToOrders(klant:Klant){
-       this.router.navigate(['./orders']);             
+    goToOrders(klantNaam:string){
+        localStorage.setItem("klantNaam", klantNaam)
+       this.router.navigate(['./orders']);   
     }
 
     addKlant(naam:string){

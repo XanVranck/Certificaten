@@ -4,7 +4,6 @@ import { environment } from "../../environments/environment";
 import { Observable } from "rxjs/Observable";
 import { Klant } from "../model/klant";
 import {KlantClass} from '../model/klant'
-import {Adres} from '../model/adres'
 import {promise} from "selenium-webdriver";
 import map = promise.map;
 import 'rxjs/Rx';
@@ -13,7 +12,6 @@ import 'rxjs/Rx';
 export class KlantService{
     private _klantUrl: string;
     private _klant:KlantClass;
-    private _adres:Adres;
     
     constructor(private _http:Http){
         this._klantUrl = `${environment.baseUrl}/klant`;

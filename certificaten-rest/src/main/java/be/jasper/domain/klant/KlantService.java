@@ -1,6 +1,7 @@
 package be.jasper.domain.klant;
 
 import be.jasper.controller.KlantDTO;
+import be.jasper.domain.order.Order;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
@@ -20,12 +21,12 @@ public class KlantService {
         return klantRepository.getKlanten();
     }
 
-    public Klant findKlantById(int id) {
-        return klantRepository.findKlantById(id);
-    }
-
     public Klant findKlantByNaam(String naam) {
         return klantRepository.findKlantByNaam(naam);
+    }
+
+    public Klant findKlantById(int id) {
+        return klantRepository.findKlantById(id);
     }
 
     public List<KlantDTO> getKlantenDTO() {
@@ -33,5 +34,9 @@ public class KlantService {
                 .stream()
                 .map(klant -> new KlantDTO(klant.getKlantID(), klant.getNaam()))
                 .collect(Collectors.toList());
+    }
+
+    public List<Order> getOrders(Klant klant) {
+        return klant.getOrders();
     }
 }

@@ -10,6 +10,7 @@ import {AppComponent} from './app.component';
 import {ordersComponent} from './orders/orders.component'
 import { klantenComponent } from './klanten/klanten.component';
 import {KlantService} from './service/klant.service';
+import {OrderService} from './service/order.service';
 import {routes} from './app.routes';
 
 
@@ -30,6 +31,7 @@ import {routes} from './app.routes';
     ],
     providers: [
        KlantService,
+       OrderService,
         {provide: LocationStrategy, useClass: HashLocationStrategy}
     ]
     })

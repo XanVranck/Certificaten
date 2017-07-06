@@ -1,5 +1,7 @@
 import {Router} from "@angular/router";
 import {Component, OnInit} from '@angular/core';
+import {Order} from "../model/order"
+import {OrderService} from "../service/order.service";
 
 @Component({
     selector: 'orders',
@@ -20,91 +22,25 @@ import {Component, OnInit} from '@angular/core';
      </thead>
      <tbody>
      <form method="post" action="certificates.html">
-         <tr>
+         <tr *ngFor="let order of orders">
              <td>
                  <div class="radio">
-                     <label><input type="radio" id='workorder1' name="workorder" required>Workorder 1</label>
+                     <label><input type="radio" id='workorder1' name="workorder" required>{{order.werkOrderNummer}}</label>
                  </div>
              </td>
              <td>
              <div class="radiotext">
-                 <label for='workorder1'>Purchaseorder1</label>
+                 <label for='workorder1'>{{order.aankoopOrderNummer}}</label>
              </div>
              </td>
             <td>
              <div class="radiotext">
-                 <label for='workorder1'>Specificatie1</label>
+                 <label for='workorder1'>{{order.specificatie}}</label>
              </div>
              </td>
               <td>
              <div class="radiotext">
-                 <label for='workorder1'>Total estimated1</label>
-             </div>
-             </td>
-         </tr>
-          <tr>
-             <td>
-                 <div class="radio">
-                     <label><input type="radio" id='workorder2' name="workorder">Workorder 2</label>
-                 </div>
-             </td>
-             <td>
-             <div class="radiotext">
-                 <label for='workorder2'>Purchaseorder2</label>
-             </div>
-             </td>
-            <td>
-             <div class="radiotext">
-                 <label for='workorder2'>Specificatie2</label>
-             </div>
-             </td>
-              <td>
-             <div class="radiotext">
-                 <label for='workorder2'>Total estimated2</label>
-             </div>
-             </td>
-         </tr>
-           <tr>
-             <td>
-                 <div class="radio">
-                     <label><input type="radio" id='workorder3' name="workorder">Workorder 3</label>
-                 </div>
-             </td>
-             <td>
-             <div class="radiotext">
-                 <label for='workorder3'>Purchaseorder3</label>
-             </div>
-             </td>
-            <td>
-             <div class="radiotext">
-                 <label for='workorder3'>Specificatie3</label>
-             </div>
-             </td>
-              <td>
-             <div class="radiotext">
-                 <label for='workorder3'>Total estimated3</label>
-             </div>
-             </td>
-         </tr>
-           <tr>
-             <td>
-                 <div class="radio">
-                     <label><input type="radio" id='workorder4' name="workorder">Workorder 4</label>
-                 </div>
-             </td>
-             <td>
-             <div class="radiotext">
-                 <label for='workorder4'>Purchaseorder4</label>
-             </div>
-             </td>
-            <td>
-             <div class="radiotext">
-                 <label for='workorder4'>Specificatie4</label>
-             </div>
-             </td>
-              <td>
-             <div class="radiotext">
-                 <label for='workorder4'>Total estimated4</label>
+                 <label for='workorder1'>{{order.totaal}}</label>
              </div>
              </td>
          </tr>
@@ -149,10 +85,19 @@ import {Component, OnInit} from '@angular/core';
 })
 
 export class ordersComponent implements OnInit {
+    private _orders:Array<Order>
 
-   // constructor(private _orderService:OrderService)
+    constructor(private _orderService:OrderService, private router: Router){
+        this._orders = []
+    }
 
     ngOnInit(){
-            
+        this._orderService
+            .getOrders(localStorage.getItem("klantNaam"))
+            .subscribe(order => this._orders = order)
+    }
+
+        get orders():Array<Order>{                   
+        return this._orders
     }
 }

@@ -21,15 +21,16 @@ public class KlantRepository {
         return entityManager.createQuery("select k from Klant k", Klant.class).getResultList();
     }
 
-    public Klant findKlantById(int klantId){
-        return entityManager.find(Klant.class, klantId);
+    public Klant findKlantById(int id) {
+        Query query = entityManager.createQuery("select k FROM Klant k WHERE klantId=:id");
+        query.setParameter("id", id);
+        return (Klant) query.getSingleResult();
     }
 
     public Klant findKlantByNaam(String naam) {
         Query query = entityManager.createQuery("select k FROM Klant k WHERE naam=:naam");
         query.setParameter("naam", naam);
         return (Klant) query.getSingleResult();
-
     }
 
 

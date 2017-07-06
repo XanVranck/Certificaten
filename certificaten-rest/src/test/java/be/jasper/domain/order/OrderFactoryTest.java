@@ -11,11 +11,11 @@ public class OrderFactoryTest {
     public static final String PURCHASE_ORDER_NUMBER = "665452BD";
     public static final String SPECIFICATION = "specification";
     public static final int TOTAL = 5000;
-    public static final int CUSTOMER_ID = 5;
+    public static final String CUSTOMER_NAME = "Jasper";
 
     @Test
     public void createOrder() throws Exception {
-        OrderDTO orderDTO = new OrderDTO(WORK_ORDER_NUMBER, PURCHASE_ORDER_NUMBER, SPECIFICATION, TOTAL, CUSTOMER_ID);
+        OrderDTO orderDTO = new OrderDTO(WORK_ORDER_NUMBER, PURCHASE_ORDER_NUMBER, SPECIFICATION, TOTAL, CUSTOMER_NAME);
 
         Order order = new OrderFactory().createOrder(orderDTO);
 

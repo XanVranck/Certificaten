@@ -20,7 +20,7 @@ public class OrderService {
     private OrderRepository orderRepository;
 
     public void addOrder(OrderDTO order){
-        Klant klant = klantRepository.findKlantById(order.getKlantId());
+        Klant klant = klantRepository.findKlantByNaam(order.getKlantNaam());
 
         klant.addOrder(orderFactory.createOrder(order));
     }

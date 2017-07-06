@@ -13,7 +13,7 @@ public class KlantFactory {
     public KlantFactory() {
     }
 
-    public Klant findKlantById(KlantDTO klantDTO){
+    public Klant findKlantByNaam(KlantDTO klantDTO){
         int id = klantDTO.getKlantId();
         return klantService.findKlantById(id);
     }
