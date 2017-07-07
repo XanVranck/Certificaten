@@ -10,6 +10,9 @@ public class OrderDTO {
     private int totaal;
     private String klantNaam;
 
+    public OrderDTO() {
+    }
+
     public OrderDTO(String werkOrderNummer, String aankoopOrderNummer, String specificatie, int totaal, String klantNaam) {
         this.werkOrderNummer = werkOrderNummer;
         this.aankoopOrderNummer = aankoopOrderNummer;

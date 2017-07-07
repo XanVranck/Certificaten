@@ -39,4 +39,8 @@ public class KlantService {
     public List<Order> getOrders(Klant klant) {
         return klant.getOrders();
     }
+
+    public void addOrder(Klant klant, Order order) {
+        klant.addOrder(order);
+    }
 }

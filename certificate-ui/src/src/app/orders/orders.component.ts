@@ -62,22 +62,22 @@ import {OrderService} from "../service/order.service";
     <form method="post" action="" class="ccform">
     <div class="ccfield-prepend">
         <span class="ccform-addon"><i class="fa fa-plus-circle fa-2x"></i></span>
-        <input class="ccformfield" type="text" placeholder="Work order nr" required>
+        <input #orderWON class="ccformfield" type="text" placeholder="Work order nr" required>
     </div>
     <div class="ccfield-prepend">
         <span class="ccform-addon"><i class="fa fa-tasks fa-2x"></i></span>
-        <input class="ccformfield" type="text" placeholder="Purchase order nr" required>
+        <input #orderPON class="ccformfield" type="text" placeholder="Purchase order nr" required>
     </div>
     <div class="ccfield-prepend">
         <span class="ccform-addon"><i class="fa fa-server fa-2x"></i></span>
-        <input class="ccformfield" type="text" placeholder="Specification" required>
+        <input #orderSpec class="ccformfield" type="text" placeholder="Specification" required>
     </div>
      <div class="ccfield-prepend">
         <span class="ccform-addon"><i class="fa fa-calculator fa-2x"></i></span>
-        <input class="ccformfield" type="text" placeholder="Total estimated" required>
+        <input #orderTot class="ccformfield" type="text" placeholder="Total estimated" required>
     </div>
     <div class="ccfield-prepend">
-        <input class="ccbtn" type="submit" value="Submit">
+        <input class="ccbtn" type="submit" (click)="addOrder(orderWON.value, orderPON.value, orderSpec.value, orderTot.value)" value="Submit">
     </div>
     </form>
 </div>
@@ -99,5 +99,15 @@ export class ordersComponent implements OnInit {
 
         get orders():Array<Order>{                   
         return this._orders
+    }
+
+    addOrder(werkOrderNummer:string, aankoopOrderNummer:string, specificatie:string, totaal:number){   
+       if(werkOrderNummer   !== "" && aankoopOrderNummer   !== "" && specificatie   !== ""){
+        this._orderService
+            .addOrder(werkOrderNummer, aankoopOrderNummer, specificatie, totaal, localStorage.getItem("klantNaam"))
+            .subscribe();
+            alert("klant opgeslagen!")
+       }
+        this.ngOnInit();        
     }
 }

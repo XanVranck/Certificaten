@@ -55,7 +55,7 @@ export class klantenComponent implements OnInit {
             .subscribe();
             alert("klant opgeslagen!")
        }
-        this.ngOnInit();
+       this.ngOnInit();        
     }
 
     get klanten():Array<Klant>{                   
