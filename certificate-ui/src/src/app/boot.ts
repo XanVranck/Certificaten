@@ -9,8 +9,10 @@ import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import {AppComponent} from './app.component';
 import {ordersComponent} from './orders/orders.component'
 import { klantenComponent } from './klanten/klanten.component';
+import { certificatenComponent } from './certificaten/certificaten.component';
 import {KlantService} from './service/klant.service';
 import {OrderService} from './service/order.service';
+import {CertificaatService} from './service/certificaat.service'
 import {routes} from './app.routes';
 
 
@@ -21,6 +23,7 @@ import {routes} from './app.routes';
         AppComponent,
         klantenComponent,
         ordersComponent,
+        certificatenComponent
     ],
     imports: [
         BrowserModule,
@@ -32,6 +35,7 @@ import {routes} from './app.routes';
     providers: [
        KlantService,
        OrderService,
+       CertificaatService,
         {provide: LocationStrategy, useClass: HashLocationStrategy}
     ]
     })

@@ -1,6 +1,7 @@
 package be.jasper.domain.order;
 
 import be.jasper.controller.OrderDTO;
+import be.jasper.domain.certificaat.Certificaat;
 import be.jasper.domain.klant.Klant;
 import be.jasper.domain.klant.KlantRepository;
 import org.springframework.stereotype.Service;
@@ -29,4 +30,11 @@ public class OrderService {
         return orderRepository.getOrders();
     }
 
+    public Order findOrderById(int orderId) {
+        return orderRepository.findOrder(orderId);
+    }
+
+    public List<Certificaat> getCertificaten(Order order) {
+        return order.getCertificaten();
+    }
 }

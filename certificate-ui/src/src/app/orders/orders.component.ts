@@ -1,6 +1,7 @@
 import {Router} from "@angular/router";
 import {Component, OnInit} from '@angular/core';
 import {Order} from "../model/order"
+import {OrderIdClass} from "../model/order"
 import {OrderService} from "../service/order.service";
 
 @Component({
@@ -21,45 +22,37 @@ import {OrderService} from "../service/order.service";
          </tr>
      </thead>
      <tbody>
-     <form method="post" action="certificates.html">
-         <tr *ngFor="let order of orders">
-             <td>
-                 <div class="radio">
-                     <label><input type="radio" id='workorder1' name="workorder" required>{{order.werkOrderNummer}}</label>
-                 </div>
-             </td>
+         <tr style="cursor:pointer" *ngFor="let order of orders" (click)="goToCertificaten(order)">
              <td>
              <div class="radiotext">
-                 <label for='workorder1'>{{order.aankoopOrderNummer}}</label>
+                      <label style="cursor:pointer" for='workorder1'>{{order.werkOrderNummer}}</label>
              </div>
              </td>
             <td>
              <div class="radiotext">
-                 <label for='workorder1'>{{order.specificatie}}</label>
+                 <label style="cursor:pointer" for='workorder1'>{{order.aankoopOrderNummer}}</label>
              </div>
              </td>
               <td>
              <div class="radiotext">
-                 <label for='workorder1'>{{order.totaal}}</label>
+                 <label style="cursor:pointer" for='workorder1'>{{order.specificatie}}</label>
+             </div>
+             </td>
+             <td>
+             <div class="radiotext">
+                 <label style="cursor:pointer" for='workorder1'>{{order.totaal}}</label>
              </div>
              </td>
          </tr>
-         <tr class="">
-         <td style="align:right;"><input class="ccbtn" type="submit" value="Submit" ></td>
-         <td></td>
-         <td></td>
-         <td></td>
-        
-    </tr>
-         </form>
          
+           
          </tbody>
 </table>
     
     
     
 	<h2>Add new order</h2>
-    <form method="post" action="" class="ccform">
+    <form class="ccform">
     <div class="ccfield-prepend">
         <span class="ccform-addon"><i class="fa fa-plus-circle fa-2x"></i></span>
         <input #orderWON class="ccformfield" type="text" placeholder="Work order nr" required>
@@ -79,7 +72,11 @@ import {OrderService} from "../service/order.service";
     <div class="ccfield-prepend">
         <input class="ccbtn" type="submit" (click)="addOrder(orderWON.value, orderPON.value, orderSpec.value, orderTot.value)" value="Submit">
     </div>
+    <div class="ccfield-prepend">
+        <input class="ccbtn" type="submit" (click)="terugNaarKlanten()" value="Terug naar klanten">
+    </div>
     </form>
+
 </div>
 `
 })
@@ -97,7 +94,7 @@ export class ordersComponent implements OnInit {
             .subscribe(order => this._orders = order)
     }
 
-        get orders():Array<Order>{                   
+    get orders():Array<Order>{                   
         return this._orders
     }
 
@@ -109,5 +106,15 @@ export class ordersComponent implements OnInit {
             alert("klant opgeslagen!")
        }
         this.ngOnInit();        
+    }
+
+    goToCertificaten(order:OrderIdClass){
+        console.log("order", JSON.stringify(order))
+        localStorage.setItem("order", JSON.stringify(order))
+        this.router.navigate(['./certificaten'])    
+    }
+
+    terugNaarKlanten(){
+        this.router.navigate(['./klanten'])
     }
 }
