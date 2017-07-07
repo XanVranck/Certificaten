@@ -15,7 +15,7 @@ public class OrderFactoryTest {
 
     @Test
     public void createOrder() throws Exception {
-        OrderDTO orderDTO = new OrderDTO(PURCHASE_ORDER_NUMBER, SPECIFICATION, TOTAL, CUSTOMER_NAME);
+        OrderDTO orderDTO = new OrderDTO(WORK_ORDER_NUMBER, PURCHASE_ORDER_NUMBER, SPECIFICATION, TOTAL, CUSTOMER_NAME);
 
         Order order = new OrderFactory().createOrder(orderDTO);
 
