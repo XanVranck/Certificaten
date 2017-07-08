@@ -67,7 +67,7 @@ import {OrderService} from "../service/order.service";
     </div>
      <div class="ccfield-prepend">
         <span class="ccform-addon"><i class="fa fa-calculator fa-2x"></i></span>
-        <input #orderTot class="ccformfield" type="text" placeholder="Total estimated" required>
+        <input #orderTot class="ccformfield" type="number" placeholder="Total estimated" required>
     </div>
     <div class="ccfield-prepend">
         <input class="ccbtn" type="submit" (click)="addOrder(orderWON.value, orderPON.value, orderSpec.value, orderTot.value)" value="Submit">
