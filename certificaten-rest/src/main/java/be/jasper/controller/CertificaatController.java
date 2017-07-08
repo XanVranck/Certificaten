@@ -25,13 +25,14 @@ public class CertificaatController {
     @Inject
     private CertificaatFactory certificaatFactory;
 
-    private Order order = new Order();
+    private int orderIdField;
 
     @RequestMapping(path = "/{orderId}", produces = "application/json", method = RequestMethod.GET)
     @CrossOrigin(origins = "http://localhost:4200")
     @ResponseBody
     public List<CertificaatDTO> getCertificaten(@PathVariable(value = "orderId") int orderId) {
-        order = orderService.findOrderById(orderId);
+        orderIdField = orderId;
+        Order order = orderService.findOrderById(orderIdField);
         return orderService.getCertificaten(order);
     }
 
@@ -39,6 +40,7 @@ public class CertificaatController {
     @CrossOrigin(origins = "http://localhost:4200")
     @ResponseBody
     public void addCertificaat(@RequestBody CertificaatDTO certificaatDTO) {
+        Order order = orderService.findOrderById(orderIdField);
         Certificaat certificaat = certificaatFactory.createCertificaat(certificaatDTO);
         orderService.addCertificaat(order, certificaat);
 //        int orderId = order.getOrderID();
