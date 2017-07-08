@@ -37,4 +37,8 @@ public class OrderService {
     public List<Certificaat> getCertificaten(Order order) {
         return order.getCertificaten();
     }
+
+    public void addCertificaat(Order order, Certificaat certificaat) {
+       order.addCertificaat(certificaat);
+    }
 }
