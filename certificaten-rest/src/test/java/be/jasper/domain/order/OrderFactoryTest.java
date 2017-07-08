@@ -7,6 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class OrderFactoryTest {
 
+    public static final int ORDER_ID = 1;
     public static final String WORK_ORDER_NUMBER = "01e12a";
     public static final String PURCHASE_ORDER_NUMBER = "665452BD";
     public static final String SPECIFICATION = "specification";
@@ -15,7 +16,7 @@ public class OrderFactoryTest {
 
     @Test
     public void createOrder() throws Exception {
-        OrderDTO orderDTO = new OrderDTO(WORK_ORDER_NUMBER, PURCHASE_ORDER_NUMBER, SPECIFICATION, TOTAL, CUSTOMER_NAME);
+        OrderDTO orderDTO = new OrderDTO(ORDER_ID, WORK_ORDER_NUMBER, PURCHASE_ORDER_NUMBER, SPECIFICATION, TOTAL, CUSTOMER_NAME);
 
         Order order = new OrderFactory().createOrder(orderDTO);
 

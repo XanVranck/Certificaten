@@ -4,6 +4,7 @@ package be.jasper.controller;
  * Created by xanv on 11/05/2017.
  */
 public class OrderDTO {
+    private int orderId;
     private String werkOrderNummer;
     private String aankoopOrderNummer;
     private String specificatie;
@@ -13,7 +14,8 @@ public class OrderDTO {
     public OrderDTO() {
     }
 
-    public OrderDTO(String werkOrderNummer, String aankoopOrderNummer, String specificatie, int totaal, String klantNaam) {
+    public OrderDTO(int orderId, String werkOrderNummer, String aankoopOrderNummer, String specificatie, int totaal, String klantNaam) {
+        this.orderId = orderId;
         this.werkOrderNummer = werkOrderNummer;
         this.aankoopOrderNummer = aankoopOrderNummer;
         this.specificatie = specificatie;
@@ -39,6 +41,14 @@ public class OrderDTO {
 
     public String getKlantNaam() {
         return klantNaam;
+    }
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
     public void setKlantNaam(String klantNaam) {

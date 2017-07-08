@@ -1,6 +1,7 @@
 package be.jasper.domain.klant;
 
 import be.jasper.controller.KlantDTO;
+import be.jasper.controller.OrderDTO;
 import be.jasper.domain.order.Order;
 import org.springframework.stereotype.Service;
 
@@ -36,8 +37,11 @@ public class KlantService {
                 .collect(Collectors.toList());
     }
 
-    public List<Order> getOrders(Klant klant) {
-        return klant.getOrders();
+    public List<OrderDTO> getOrders(Klant klant) {
+        return klant.getOrders()
+                .stream()
+                .map(order -> new OrderDTO(order.getOrderID(), order.getWerkOrderNummer(), order.getAankoopOrderNummer(), order.getSpecificatie(), order.getTotaal(), klant.getNaam()))
+                .collect(Collectors.toList());
     }
 
     public void addOrder(Klant klant, Order order) {

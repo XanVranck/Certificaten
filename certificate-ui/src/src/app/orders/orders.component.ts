@@ -103,13 +103,12 @@ export class ordersComponent implements OnInit {
         this._orderService
             .addOrder(werkOrderNummer, aankoopOrderNummer, specificatie, totaal, localStorage.getItem("klantNaam"))
             .subscribe();
-            alert("klant opgeslagen!")
+            alert("order opgeslagen!")
        }
         this.ngOnInit();        
     }
 
     goToCertificaten(order:OrderIdClass){
-        console.log("order", JSON.stringify(order))
         localStorage.setItem("order", JSON.stringify(order))
         this.router.navigate(['./certificaten'])    
     }
