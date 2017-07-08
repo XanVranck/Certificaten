@@ -54,8 +54,10 @@ export class klantenComponent implements OnInit {
        if(naam !== ""){
         this._klantService
             .addKlant(naam)
-            .subscribe();
-            alert("klant opgeslagen!")
+            .subscribe(() =>{
+                alert("Klant opgeslagen!"),  this.ngOnInit()
+            });
+            
        }
        this.ngOnInit();        
     }

@@ -102,10 +102,10 @@ export class ordersComponent implements OnInit {
        if(werkOrderNummer   !== "" && aankoopOrderNummer   !== "" && specificatie   !== ""){
         this._orderService
             .addOrder(werkOrderNummer, aankoopOrderNummer, specificatie, totaal, localStorage.getItem("klantNaam"))
-            .subscribe();
-            alert("order opgeslagen!")
-       }
-        this.ngOnInit();        
+            .subscribe(() =>{
+                alert("Order opgeslagen!"),  this.ngOnInit()
+            });
+       }     
     }
 
     goToCertificaten(order:OrderIdClass){
