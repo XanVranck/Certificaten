@@ -41,7 +41,7 @@ public class Klant {
 
 
     public List<Order> getOrders(){
-        return orders;
+        return new ArrayList<>(orders);
     }
 
     public void addOrder(Order order) {
