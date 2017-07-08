@@ -17,10 +17,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ContextConfiguration(classes = CertificatenRestApplication.class)
 @Transactional
 @ActiveProfiles("dev")
-public class SpringIntegrationTest {
+public abstract class SpringIntegrationTest {
 
-    @Test
-    public void trueIsTrue() throws Exception {
-        assertThat(true).isEqualTo(true);
-    }
 }
