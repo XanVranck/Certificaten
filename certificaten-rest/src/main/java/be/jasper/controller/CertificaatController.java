@@ -4,7 +4,6 @@ import be.jasper.domain.certificaat.Certificaat;
 import be.jasper.domain.certificaat.CertificaatFactory;
 import be.jasper.domain.certificaat.CertificaatService;
 import be.jasper.domain.order.Order;
-import be.jasper.domain.order.OrderFactory;
 import be.jasper.domain.order.OrderService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -18,13 +17,10 @@ import java.util.List;
 @Transactional
 public class CertificaatController {
     @Inject
-    private CertificaatService certificaatService;
-
-    @Inject
     private OrderService orderService;
 
     @Inject
-    private OrderFactory orderFactory;
+    private CertificaatService certificaatService;
 
     @Inject
     private CertificaatFactory certificaatFactory;
@@ -34,7 +30,7 @@ public class CertificaatController {
     @RequestMapping(path = "/{orderId}", produces = "application/json", method = RequestMethod.GET)
     @CrossOrigin(origins = "http://localhost:4200")
     @ResponseBody
-    public List<Certificaat> getCertificaten(@PathVariable(value = "orderId") int orderId) {
+    public List<CertificaatDTO> getCertificaten(@PathVariable(value = "orderId") int orderId) {
         order = orderService.findOrderById(orderId);
         return orderService.getCertificaten(order);
     }
@@ -42,7 +38,12 @@ public class CertificaatController {
     @RequestMapping(method = RequestMethod.POST)
     @CrossOrigin(origins = "http://localhost:4200")
     @ResponseBody
-    public void addCertificaat(@RequestBody Certificaat certificaat) {
+    public void addCertificaat(@RequestBody CertificaatDTO certificaatDTO) {
+        Certificaat certificaat = certificaatFactory.createCertificaat(certificaatDTO);
         orderService.addCertificaat(order, certificaat);
+//        int orderId = order.getOrderID();
+//        int certificaatId = certificaat.getCertificaatID();
+//        orderService.mapOrderWithCertificaat(orderId, certificaatId);
+//        certificaatService.addCertificaat(order, certificaat);
     }
 }

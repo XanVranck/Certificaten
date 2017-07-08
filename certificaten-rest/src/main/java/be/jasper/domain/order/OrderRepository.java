@@ -11,7 +11,7 @@ public class OrderRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public void addOrder(Order order){
+    public void addOrder(Order order) {
         entityManager.persist(order);
     }
 
@@ -19,7 +19,13 @@ public class OrderRepository {
         return entityManager.createQuery("select o from Order o", Order.class).getResultList();
     }
 
-    public Order findOrder(int orderId){
+    public Order findOrder(int orderId) {
         return entityManager.find(Order.class, orderId);
+    }
+
+    public void mapOrderWithCertificaat(int orderId, int certificaatId) {
+        entityManager.createNativeQuery("INSERT INTO orders_certificaten (order_order_id, certificaten_certificaat_id) VALUES (:orderId, :certificaatId)")
+                .setParameter("orderId", orderId)
+                .setParameter("certificaatId", certificaatId);
     }
 }

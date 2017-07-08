@@ -1,6 +1,5 @@
 package be.jasper.domain.certificaat;
 
-import be.jasper.controller.CertificaatDTO;
 import be.jasper.domain.order.Order;
 import be.jasper.domain.order.OrderRepository;
 import org.springframework.stereotype.Service;
@@ -27,9 +26,7 @@ public class CertificaatService {
         return certificaatRepository.getCertificaten();
     }
 
-    public void addCertificaat(CertificaatDTO certificaat){
-        Order order= orderRepository.findOrder(certificaat.getOrderId());
-
-        order.addCertificaat(certificaatFactory.createCertificaat(certificaat));
+    public void addCertificaat(Order order, Certificaat certificaat){
+        order.addCertificaat(certificaat);
     }
 }

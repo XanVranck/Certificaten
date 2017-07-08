@@ -1,5 +1,6 @@
 package be.jasper.domain.order;
 
+import be.jasper.controller.CertificaatDTO;
 import be.jasper.controller.OrderDTO;
 import be.jasper.domain.certificaat.Certificaat;
 import be.jasper.domain.klant.Klant;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class OrderService {
@@ -34,11 +36,18 @@ public class OrderService {
         return orderRepository.findOrder(orderId);
     }
 
-    public List<Certificaat> getCertificaten(Order order) {
-        return order.getCertificaten();
+    public List<CertificaatDTO> getCertificaten(Order order) {
+        return order.getCertificaten()
+                .stream()
+                .map(certificaat -> new CertificaatDTO(order.getOrderID(), certificaat.getCertificaatNummer(), certificaat.getCertificaatDatum(), certificaat.getSpecifiekTonnage()))
+                .collect(Collectors.toList());
     }
 
     public void addCertificaat(Order order, Certificaat certificaat) {
        order.addCertificaat(certificaat);
+    }
+
+    public void mapOrderWithCertificaat(int orderId, int certificaatId) {
+        orderRepository.mapOrderWithCertificaat(orderId,certificaatId);
     }
 }
