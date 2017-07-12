@@ -1,18 +1,20 @@
 package be.jasper.controller;
 
+import java.util.Date;
+
 /**
  * Created by xanv on 11/05/2017.
  */
 public class CertificaatDTO {
     private Integer orderID;
     private String certificaatNummer;
-    private String certificaatDatum;
+    private Date certificaatDatum;
     private int specifiekTonnage;
 
     public CertificaatDTO() {
     }
 
-    public CertificaatDTO(Integer orderID, String certificaatNummer, String certificaatDatum, int specifiekTonnage) {
+    public CertificaatDTO(Integer orderID, String certificaatNummer, Date certificaatDatum, int specifiekTonnage) {
         this.orderID = orderID;
         this.certificaatNummer = certificaatNummer;
         this.certificaatDatum = certificaatDatum;
@@ -23,7 +25,7 @@ public class CertificaatDTO {
         return certificaatNummer;
     }
 
-    public String getCertificaatDatum() {
+    public Date getCertificaatDatum() {
         return certificaatDatum;
     }
 
@@ -39,7 +41,7 @@ public class CertificaatDTO {
         this.certificaatNummer = certificaatNummer;
     }
 
-    public void setCertificaatDatum(String certificaatDatum) {
+    public void setCertificaatDatum(Date certificaatDatum) {
         this.certificaatDatum = certificaatDatum;
     }
 

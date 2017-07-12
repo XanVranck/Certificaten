@@ -1,5 +1,7 @@
 --#import.sql file
 --
+--drop table  certificaten if exist;
+--
 --INSERT INTO KLANTEN (NAAM) VALUES ("Russell"),("Sean"),("Prescott"),("Brody"),("Carter"),("Joseph"),("Clarke"),("Noble"),("Gary"),("Myles");
 --INSERT INTO KLANTEN (NAAM) VALUES ("Donovan"),("Forrest"),("Eric"),("Caesar"),("Adam"),("Stephen"),("Evan"),("Lev"),("Jacob"),("Zachery");
 --INSERT INTO KLANTEN (NAAM) VALUES ("Hector"),("Thomas"),("Akeem"),("Lewis"),("John"),("Raja"),("Cameron"),("Ashton"),("Felix"),("Tucker");
@@ -21,13 +23,13 @@
 --INSERT INTO ADRES (NUMMER, STRAAT, POSTCODE, STAD) VALUES ("1", "4015 Ante Road","1081","Leuze"),("2","151-4973 Id Ave","N0W 3P2","Schore"),("3","Ap #625-9915 At Avenue","55027","Saint Paul"),("4","P.O. Box 130, 4889 Lectus Ave","10691","Comblain-au-Pont"),("5","Ap #634-9437 Lorem Ave","WL0 9NI","Würzburg"),("6","P.O. Box 766, 7712 Et, Avenue","00658","Teodoro Schmidt"),("7","533-2957 Dui. Rd.","193622","Langenburg"),("8","103-5470 Porttitor St.","744764","Ukkel"),("9","P.O. Box 177, 7375 Integer Street","81251-915","Isola del Gran Sasso d'Italia"),("10","932-4533 Tristique Ave","71628","Bensheim");
 --INSERT INTO ADRES (NUMMER, STRAAT, POSTCODE, STAD) VALUES ("1", "371-3069 Massa. St.","A5T 7W7","Bergisch Gladbach"),("2","716-1533 Montes, Av.","9415HW","Pincher Creek"),("3","Ap #577-1485 Arcu. Rd.","Q77 5FL","Ghislarengo"),("4","752-3674 Montes, Av.","60517","Aubervilliers"),("5","593-3274 Nulla Rd.","184486","Westkapelle"),("6","P.O. Box 740, 4364 Iaculis St.","974775","Wilmont"),("7","P.O. Box 513, 2694 Phasellus Rd.","160951","Chilliwack"),("8","404 Phasellus Av.","47507","Paredones"),("9","7550 Euismod St.","45-726","Shawinigan"),("10","779-3866 Vitae Road","48657","Solesino");
 --INSERT INTO ADRES (NUMMER, STRAAT, POSTCODE, STAD) VALUES ("1", "P.O. Box 434, 5471 Ipsum Rd." ,"50837","Bankura"),("2","Ap #689-9482 Pellentesque Rd.","19935-366","Greenlaw"),("3","Ap #236-9737 Risus. Av.","N2N 3C7","Laguna Blanca"),("4","P.O. Box 868, 3492 Vitae Rd.","93466","Inuvik"),("5","758-3769 Risus. Ave","63-722","Friedrichshafen"),("6","P.O. Box 391, 4417 Justo St.","29549","Penna San Giovanni"),("7","7853 Cursus St.","K0F 2DE","Dawson Creek"),("8","841-5776 Ad Av.","04-017","Shimoga"),("9","P.O. Box 161, 842 Aenean St.","9412","Medemblik"),("10","P.O. Box 498, 7917 Dapibus Road","33186","Sant'Urbano");
-----
-----insert into KLANTEN(FK_ADRES_ID)
-----    select distinct ADRES_ID
-----    from ADRES;
-----
-----update KLANTEN
-----    set FK_ADRES_ID = b.id
-----    from KLANTEN join
-----         ADRES
-----         on KLANTEN.FK_ADRES_ID = ADRES.ADRES_ID;
+--
+--insert into KLANTEN(FK_ADRES_ID)
+--    select distinct ADRES_ID
+--    from ADRES;
+--
+--update KLANTEN
+--    set FK_ADRES_ID = b.id
+--    from KLANTEN join
+--         ADRES
+--         on KLANTEN.FK_ADRES_ID = ADRES.ADRES_ID;

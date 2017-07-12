@@ -9,6 +9,8 @@ import org.junit.Test;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.sql.Date;
+import java.time.LocalDate;
 
 public class CertificaatRepositoryTest extends SpringIntegrationTest {
     @PersistenceContext
@@ -21,15 +23,15 @@ public class CertificaatRepositoryTest extends SpringIntegrationTest {
 
     @Before
     public void setup() {
-        one = new Certificaat("1", "1",50);
-        two = new Certificaat("3", "1", 79);
+        one = new Certificaat("1", Date.valueOf(LocalDate.now()),50);
+        two = new Certificaat("3", Date.valueOf(LocalDate.now()), 79);
         entityManager.persist(one);
         entityManager.persist(two);
     }
 
     @Test
     public void addCertificaat() throws Exception {
-        Certificaat certificaat = new Certificaat("2", "1", 6541);
+        Certificaat certificaat = new Certificaat("2", Date.valueOf(LocalDate.now()), 6541);
         certificaatRepository.addCertificaat(certificaat);
         Assertions.assertThat(certificaatRepository.getCertificaten()).contains(one, two, certificaat);
     }

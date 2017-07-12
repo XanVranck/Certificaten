@@ -43,9 +43,5 @@ public class CertificaatController {
         Order order = orderService.findOrderById(orderIdField);
         Certificaat certificaat = certificaatFactory.createCertificaat(certificaatDTO);
         orderService.addCertificaat(order, certificaat);
-//        int orderId = order.getOrderID();
-//        int certificaatId = certificaat.getCertificaatID();
-//        orderService.mapOrderWithCertificaat(orderId, certificaatId);
-//        certificaatService.addCertificaat(order, certificaat);
     }
 }

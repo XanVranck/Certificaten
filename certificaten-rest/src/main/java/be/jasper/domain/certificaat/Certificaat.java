@@ -1,8 +1,12 @@
 package be.jasper.domain.certificaat;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 
-import static javax.persistence.GenerationType.*;
+import java.util.Date;
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "CERTIFICATEN")
@@ -16,12 +20,13 @@ public class Certificaat {
     private String certificaatNummer;
 
     @Column(name = "CERTIFICAAT_DATUM")
-    private String certificaatDatum;
+    @Type(type="date")
+    private Date certificaatDatum;
 
     @Column(name = "SPECIFIEK_TONNAGE")
     private int specifiekTonnage;
 
-    public Certificaat(String certificaatNummer, String certificaatDatum, int specifiekGewicht) {
+    public Certificaat(String certificaatNummer, Date certificaatDatum, int specifiekGewicht) {
         this.certificaatNummer = certificaatNummer;
         this.certificaatDatum = certificaatDatum;
         this.specifiekTonnage = specifiekGewicht;
@@ -38,7 +43,7 @@ public class Certificaat {
         return certificaatNummer;
     }
 
-    public String getCertificaatDatum() {
+    public Date getCertificaatDatum() {
         return certificaatDatum;
     }
 

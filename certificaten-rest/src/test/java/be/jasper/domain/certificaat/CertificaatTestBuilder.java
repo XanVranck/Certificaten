@@ -1,16 +1,18 @@
 package be.jasper.domain.certificaat;
 
+import java.util.Date;
+
 /**
  * Created by xanv on 11/05/2017.
  */
 public class CertificaatTestBuilder {
     private String certificaatNummer;
-    private String certificaatDatum;
+    private Date certificaatDatum;
     private int specifiekGewicht;
 
     public CertificaatTestBuilder() {
         this.certificaatNummer = "205";
-        this.certificaatDatum = "17/08/1992";
+        this.certificaatDatum = new Date();
         this.specifiekGewicht = 250;
     }
 
@@ -19,7 +21,7 @@ public class CertificaatTestBuilder {
         return this;
     }
 
-    public CertificaatTestBuilder withCertificaatDatum(String certificaatDatum) {
+    public CertificaatTestBuilder withCertificaatDatum(Date certificaatDatum) {
         this.certificaatDatum = certificaatDatum;
         return this;
     }

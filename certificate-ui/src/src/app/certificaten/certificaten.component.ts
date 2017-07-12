@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { Certificaat, CertificaatClass } from "../model/certificaat";
 import {CertificaatService} from '../service/certificaat.service'
 import {Order, OrderIdClass} from "../model/order";
+import { DatePipe } from '@angular/common'
 
 import {Router} from "@angular/router";
 
@@ -50,7 +51,7 @@ import {Router} from "@angular/router";
     </div>
     <div class="ccfield-prepend">
         <span class="ccform-addon"><i class="fa fa-calendar-check-o fa-2x"></i></span>
-        <input #certificaatDate class="ccformfield" type="text" placeholder="Date certificate" required>
+        <input #certificaatDate class="ccformfield" type="date" required>
     </div>
     <div class="ccfield-prepend">
         <span class="ccform-addon"><i class="fa fa-balance-scale fa-2x"></i></span>
@@ -78,9 +79,11 @@ export class certificatenComponent implements OnInit {
     private _order:OrderIdClass
     private _orderId:number;
     private _certificaat:CertificaatClass;
+    private date:Date;
 
-    constructor(private router: Router, private _certificaatService:CertificaatService){
+    constructor(private router: Router, private _certificaatService:CertificaatService, private datepipe: DatePipe){
         this._certificaten = []
+        this.date = new Date;
     }
 
     ngOnInit(): void {
@@ -91,20 +94,22 @@ export class certificatenComponent implements OnInit {
         this._certificaatService
             .getCertificaten(this._orderId)
             .subscribe(certificaat => this._certificaten = certificaat)
+
+         this.getDate()
     }
 
     get certificaten():Array<Certificaat>{                   
         return this._certificaten
     }
 
-    addCertificaat(certificaatNummer:string, certificaatDatum:string, specifiekTonnage:number){
+    addCertificaat(certificaatNummer:string, certificaatDatum:Date, specifiekTonnage:number){
     this._certificaat = {
         "certificaatNummer": certificaatNummer,
         "certificaatDatum" : certificaatDatum,
         "specifiekTonnage" : specifiekTonnage
     }
 
-    if(certificaatNummer !== "" && certificaatDatum !== ""){
+    if(certificaatNummer !== ""){
         this._certificaatService
             .addCertificaat(this._certificaat, this._orderId)
             .subscribe(() =>{
@@ -118,5 +123,11 @@ export class certificatenComponent implements OnInit {
     }
     terugNaarKlanten(){
       this.router.navigate(['./klanten'])        
+    }
+
+    getDate(){
+        let latest_date = this.datepipe.transform(this.date, 'dd-MM-yyyy')
+        console.log("datum", latest_date)
+        return latest_date;
     }
 }

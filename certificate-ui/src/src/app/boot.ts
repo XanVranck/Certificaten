@@ -4,6 +4,7 @@ import {HttpModule} from '@angular/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FormControl,FormGroup} from '@angular/forms';
 import {NgModule} from '@angular/core';
+ import { DatePipe } from '@angular/common'
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 import {AppComponent} from './app.component';
@@ -33,6 +34,7 @@ import {routes} from './app.routes';
         RouterModule.forRoot(routes)
     ],
     providers: [
+        DatePipe,
        KlantService,
        OrderService,
        CertificaatService,

@@ -47,6 +47,8 @@ export class klantenComponent implements OnInit {
     if(klantNaam !== ""){
         localStorage.setItem("klantNaam", klantNaam)
        this.router.navigate(['./orders']);   
+    }else{
+        alert("Geen klant geselecteerd...")
     }
     }
 

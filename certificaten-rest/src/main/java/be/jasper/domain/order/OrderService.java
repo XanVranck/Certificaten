@@ -46,8 +46,4 @@ public class OrderService {
     public void addCertificaat(Order order, Certificaat certificaat) {
        order.addCertificaat(certificaat);
     }
-
-    public void mapOrderWithCertificaat(int orderId, int certificaatId) {
-        orderRepository.mapOrderWithCertificaat(orderId,certificaatId);
-    }
 }
