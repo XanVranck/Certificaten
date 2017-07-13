@@ -3,6 +3,7 @@ package be.jasper.domain.klant;
 import be.jasper.controller.KlantDTO;
 import be.jasper.controller.OrderDTO;
 import be.jasper.domain.order.Order;
+import be.jasper.errorhandler.KlantNietGevonden;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
@@ -22,8 +23,8 @@ public class KlantService {
         return klantRepository.getKlanten();
     }
 
-    public Klant findKlantByNaam(String naam) {
-        return klantRepository.findKlantByNaam(naam);
+    public Klant findKlantByNaam(String naam) throws KlantNietGevonden {
+            return klantRepository.findKlantByNaam(naam);
     }
 
     public Klant findKlantById(int id) {
@@ -42,6 +43,7 @@ public class KlantService {
                 .stream()
                 .map(order -> new OrderDTO(order.getOrderID(), order.getWerkOrderNummer(), order.getAankoopOrderNummer(), order.getSpecificatie(), order.getTotaal(), klant.getNaam()))
                 .collect(Collectors.toList());
+
     }
 
     public void addOrder(Klant klant, Order order) {

@@ -94,8 +94,6 @@ export class certificatenComponent implements OnInit {
         this._certificaatService
             .getCertificaten(this._orderId)
             .subscribe(certificaat => this._certificaten = certificaat)
-
-         this.getDate()
     }
 
     get certificaten():Array<Certificaat>{                   

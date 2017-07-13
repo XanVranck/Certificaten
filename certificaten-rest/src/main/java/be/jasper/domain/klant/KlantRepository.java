@@ -1,10 +1,9 @@
 package be.jasper.domain.klant;
 
+import be.jasper.errorhandler.KlantNietGevonden;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import javax.persistence.*;
 import java.util.List;
 
 @Repository
@@ -27,10 +26,16 @@ public class KlantRepository {
         return (Klant) query.getSingleResult();
     }
 
-    public Klant findKlantByNaam(String naam) {
+    public Klant findKlantByNaam(String naam) throws KlantNietGevonden {
+        Klant klant;
         Query query = entityManager.createQuery("select k FROM Klant k WHERE naam=:naam");
         query.setParameter("naam", naam);
-        return (Klant) query.getSingleResult();
+        try {
+            klant = (Klant) query.getSingleResult();
+        } catch (NoResultException e) {
+            throw new KlantNietGevonden(naam);
+        }
+        return klant;
     }
 
 

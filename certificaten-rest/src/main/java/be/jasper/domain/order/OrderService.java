@@ -5,6 +5,7 @@ import be.jasper.controller.OrderDTO;
 import be.jasper.domain.certificaat.Certificaat;
 import be.jasper.domain.klant.Klant;
 import be.jasper.domain.klant.KlantRepository;
+import be.jasper.errorhandler.KlantNietGevonden;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
@@ -22,7 +23,7 @@ public class OrderService {
     @Inject
     private OrderRepository orderRepository;
 
-    public void addOrder(OrderDTO order){
+    public void addOrder(OrderDTO order) throws KlantNietGevonden {
         Klant klant = klantRepository.findKlantByNaam(order.getKlantNaam());
 
         klant.addOrder(orderFactory.createOrder(order));
