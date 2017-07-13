@@ -2,7 +2,6 @@ package be.jasper.controller;
 
 import be.jasper.domain.certificaat.Certificaat;
 import be.jasper.domain.certificaat.CertificaatFactory;
-import be.jasper.domain.certificaat.CertificaatService;
 import be.jasper.domain.order.Order;
 import be.jasper.domain.order.OrderService;
 import org.springframework.stereotype.Controller;
@@ -18,9 +17,6 @@ import java.util.List;
 public class CertificaatController {
     @Inject
     private OrderService orderService;
-
-    @Inject
-    private CertificaatService certificaatService;
 
     @Inject
     private CertificaatFactory certificaatFactory;

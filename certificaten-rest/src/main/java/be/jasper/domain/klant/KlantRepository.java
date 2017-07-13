@@ -20,12 +20,6 @@ public class KlantRepository {
         return entityManager.createQuery("select k from Klant k", Klant.class).getResultList();
     }
 
-    public Klant findKlantById(int id) {
-        Query query = entityManager.createQuery("select k FROM Klant k WHERE klantId=:id");
-        query.setParameter("id", id);
-        return (Klant) query.getSingleResult();
-    }
-
     public Klant findKlantByNaam(String naam) throws KlantNietGevonden {
         Klant klant;
         Query query = entityManager.createQuery("select k FROM Klant k WHERE naam=:naam");

@@ -1,6 +1,5 @@
 package be.jasper.controller;
 
-import be.jasper.domain.klant.Klant;
 import be.jasper.domain.klant.KlantService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,7 +11,8 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.util.List;
 
-import static org.springframework.web.bind.annotation.RequestMethod.*;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @Controller
 @RequestMapping("/klant")
@@ -24,7 +24,7 @@ public class KlantController {
     @RequestMapping(method = POST)
     @CrossOrigin(origins = "http://localhost:4200")
     @ResponseBody
-    public void addKlant(@RequestBody Klant klant){
+    public void addKlant(@RequestBody KlantDTO klant){
         klantService.addKlant(klant);
     }
 

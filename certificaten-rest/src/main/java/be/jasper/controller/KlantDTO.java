@@ -9,6 +9,9 @@ public class KlantDTO {
         this.naam = naam;
     }
 
+    public KlantDTO() {
+    }
+
     public int getKlantId() {
         return klantId;
     }

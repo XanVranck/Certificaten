@@ -29,11 +29,11 @@ public class KlantControllerTest  extends SpringIntegrationTest {
         nena = new Klant("Nena");
         nenaDTO = new KlantDTO(1, "Nena");
         klantDTOList.add(nenaDTO);
-        klantController.addKlant(nena);
     }
 
     @Test
     public void addKlantEnGetKlant_ZouJuistToegevoegdeKlantMoetenTerugGeven() throws Exception {
+        klantController.addKlant(nenaDTO);
         Assertions.assertThat(klantController.getKlanten().toString()).isEqualTo(klantDTOList.toString());
     }
 

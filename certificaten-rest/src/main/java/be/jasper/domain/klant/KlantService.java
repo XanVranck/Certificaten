@@ -15,7 +15,11 @@ public class KlantService {
     @Inject
     private KlantRepository klantRepository;
 
-    public void addKlant(Klant klant) {
+    @Inject
+    private KlantFactory klantFactory;
+
+    public void addKlant(KlantDTO klantDTO) {
+        Klant klant = klantFactory.createKlant(klantDTO);
         klantRepository.addKlant(klant);
     }
 
@@ -25,10 +29,6 @@ public class KlantService {
 
     public Klant findKlantByNaam(String naam) throws KlantNietGevonden {
             return klantRepository.findKlantByNaam(naam);
-    }
-
-    public Klant findKlantById(int id) {
-        return klantRepository.findKlantById(id);
     }
 
     public List<KlantDTO> getKlantenDTO() {

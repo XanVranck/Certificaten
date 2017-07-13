@@ -50,4 +50,33 @@ public class Klant {
     public void addOrder(Order order) {
         orders.add(order);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Klant klant = (Klant) o;
+
+        if (klantID != klant.klantID) return false;
+        if (naam != null ? !naam.equals(klant.naam) : klant.naam != null) return false;
+        return orders != null ? orders.equals(klant.orders) : klant.orders == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = klantID;
+        result = 31 * result + (naam != null ? naam.hashCode() : 0);
+        result = 31 * result + (orders != null ? orders.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Klant{" +
+                "klantID=" + klantID +
+                ", naam='" + naam + '\'' +
+                ", orders=" + orders +
+                '}';
+    }
 }
