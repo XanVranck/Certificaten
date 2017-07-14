@@ -71,4 +71,44 @@ public class OrderDTO {
         this.totaal = totaal;
     }
 
+    @Override
+    public String toString() {
+        return "OrderDTO{" +
+                "orderId=" + orderId +
+                ", werkOrderNummer='" + werkOrderNummer + '\'' +
+                ", aankoopOrderNummer='" + aankoopOrderNummer + '\'' +
+                ", specificatie='" + specificatie + '\'' +
+                ", totaal=" + totaal +
+                ", klantNaam='" + klantNaam + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        OrderDTO orderDTO = (OrderDTO) o;
+
+        if (orderId != orderDTO.orderId) return false;
+        if (totaal != orderDTO.totaal) return false;
+        if (werkOrderNummer != null ? !werkOrderNummer.equals(orderDTO.werkOrderNummer) : orderDTO.werkOrderNummer != null)
+            return false;
+        if (aankoopOrderNummer != null ? !aankoopOrderNummer.equals(orderDTO.aankoopOrderNummer) : orderDTO.aankoopOrderNummer != null)
+            return false;
+        if (specificatie != null ? !specificatie.equals(orderDTO.specificatie) : orderDTO.specificatie != null)
+            return false;
+        return klantNaam != null ? klantNaam.equals(orderDTO.klantNaam) : orderDTO.klantNaam == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = orderId;
+        result = 31 * result + (werkOrderNummer != null ? werkOrderNummer.hashCode() : 0);
+        result = 31 * result + (aankoopOrderNummer != null ? aankoopOrderNummer.hashCode() : 0);
+        result = 31 * result + (specificatie != null ? specificatie.hashCode() : 0);
+        result = 31 * result + totaal;
+        result = 31 * result + (klantNaam != null ? klantNaam.hashCode() : 0);
+        return result;
+    }
 }
