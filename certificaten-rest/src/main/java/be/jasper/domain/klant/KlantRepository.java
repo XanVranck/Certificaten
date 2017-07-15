@@ -3,7 +3,10 @@ package be.jasper.domain.klant;
 import be.jasper.errorhandler.KlantNietGevonden;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.*;
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
 
 @Repository
@@ -33,4 +36,7 @@ public class KlantRepository {
     }
 
 
+    public void deleteKlant(Klant klant) {
+            entityManager.remove(klant);
+    }
 }

@@ -83,6 +83,15 @@ public class KlantRepositoryTest extends SpringIntegrationTest {
         assertThat(klantRepository.getKlanten()).contains(jasper, nena, xan);
     }
 
+    @Test
+    public void deleteKlant_noKlantenLeft() throws Exception {
+        klantRepository.deleteKlant(xan);
+        klantRepository.deleteKlant(nena);
+        klantRepository.deleteKlant(jasper);
+
+        assertThat(klantRepository.getKlanten()).isEmpty();
+    }
+
     @After
     public void tearDown() throws Exception {
         entityManager.clear();

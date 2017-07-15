@@ -107,7 +107,7 @@ export class certificatenComponent implements OnInit {
         "specifiekTonnage" : specifiekTonnage
     }
 
-    if(certificaatNummer !== ""){
+    if(certificaatNummer !== "" && (specifiekTonnage !== null || specifiekTonnage !==0) && certificaatDatum !== undefined){
         this._certificaatService
             .addCertificaat(this._certificaat, this._orderId)
             .subscribe(() =>{

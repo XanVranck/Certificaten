@@ -49,4 +49,10 @@ public class KlantService {
     public void addOrder(Klant klant, Order order) {
         klant.addOrder(order);
     }
+
+    public void deleteKlant(KlantDTO klantDTO) throws KlantNietGevonden {
+            Klant klant = klantRepository.findKlantByNaam(klantDTO.getNaam());
+
+        klantRepository.deleteKlant(klant);
+    }
 }

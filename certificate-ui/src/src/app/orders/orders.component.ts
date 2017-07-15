@@ -99,7 +99,7 @@ export class ordersComponent implements OnInit {
     }
 
     addOrder(werkOrderNummer:string, aankoopOrderNummer:string, specificatie:string, totaal:number){   
-       if(werkOrderNummer   !== "" && aankoopOrderNummer   !== "" && specificatie   !== ""){
+       if(werkOrderNummer   !== "" && aankoopOrderNummer   !== "" && specificatie   !== "" && totaal !== undefined){
         this._orderService
             .addOrder(werkOrderNummer, aankoopOrderNummer, specificatie, totaal, localStorage.getItem("klantNaam"))
             .subscribe(() =>{

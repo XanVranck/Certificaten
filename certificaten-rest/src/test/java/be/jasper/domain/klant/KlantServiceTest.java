@@ -1,6 +1,7 @@
 package be.jasper.domain.klant;
 
 import be.jasper.controller.KlantDTO;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.mockito.InjectMocks;
@@ -24,10 +25,17 @@ public class KlantServiceTest {
     @Rule
     public MockitoRule rule = MockitoJUnit.rule();
 
+    private KlantDTO klantDTO;
+    private Klant klant;
+
+    @Before
+    public void setUp() throws Exception {
+        klantDTO = new KlantDTO(1, "Xan");
+        klant = new Klant("Xan");
+    }
+
     @Test
     public void addKlant_MoetVerwijzenNaarKlantRepoAddKlantMethode() throws Exception {
-        KlantDTO klantDTO = new KlantDTO(1, "Xan");
-        Klant klant = new Klant("Xan");
         when(klantFactory.createKlant(klantDTO)).thenReturn(klant);
 
         klantService.addKlant(klantDTO);

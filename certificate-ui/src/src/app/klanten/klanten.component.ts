@@ -44,7 +44,7 @@ export class klantenComponent implements OnInit {
     }
 
     goToOrders(klantNaam:string){
-    if(klantNaam !== ""){
+    if(klantNaam !== undefined){
         localStorage.setItem("klantNaam", klantNaam)
        this.router.navigate(['./orders']);   
     }else{
