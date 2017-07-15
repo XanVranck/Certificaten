@@ -29,7 +29,13 @@ export class CertificaatService{
             .post(this._certificaatUrl, certificaat)    
     }
 
-    updateCertificaat(certificaat:CertificaatClass){
+    updateCertificaat(certificaatId:number, certificaatNummer:string, certificaatDatum:Date, specifiekTonnage:number){
+     this._certificaat = {
+        "certificaatId" : certificaatId,
+        "certificaatNummer": certificaatNummer,
+        "certificaatDatum" : certificaatDatum,
+        "specifiekTonnage" : specifiekTonnage
+    }
         return this._http
                 .put(this._certificaatUrl, this._certificaat)
 

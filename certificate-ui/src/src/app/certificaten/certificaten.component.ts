@@ -170,16 +170,9 @@ export class certificatenComponent implements OnInit {
 
     updateCertificaat(certificaatId:number, certificaatNummer:string, certificaatDatum:Date, specifiekTonnage:number){
         
-    this._certificaat = {
-        "certificaatId" : certificaatId,
-        "certificaatNummer": certificaatNummer,
-        "certificaatDatum" : certificaatDatum,
-        "specifiekTonnage" : specifiekTonnage
-    }
-
     if(certificaatId !== undefined && certificaatNummer !== "" && (specifiekTonnage !== null || specifiekTonnage !==0) && certificaatDatum !== undefined){
         this._certificaatService
-            .updateCertificaat(this._certificaat)
+            .updateCertificaat(certificaatId, certificaatNummer, certificaatDatum, specifiekTonnage)
             .subscribe(() =>{
                 alert("Certificaat aangepast!"),  this.ngOnInit()
             });
