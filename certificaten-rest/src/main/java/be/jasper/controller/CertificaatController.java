@@ -40,4 +40,6 @@ public class CertificaatController {
         Certificaat certificaat = certificaatFactory.createCertificaat(certificaatDTO);
         orderService.addCertificaat(order, certificaat);
     }
+
+
 }

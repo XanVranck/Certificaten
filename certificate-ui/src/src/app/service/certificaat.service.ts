@@ -28,4 +28,10 @@ export class CertificaatService{
          return this._http
             .post(this._certificaatUrl, certificaat)    
     }
+
+    updateCertificaat(certificaat:CertificaatClass){
+        return this._http
+                .put(this._certificaatUrl, this._certificaat)
+
+    }
 }

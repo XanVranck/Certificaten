@@ -46,7 +46,7 @@ public class CertificaatControllerTest extends SpringIntegrationTest {
     public void setUp() throws Exception {
         nenaDTO = new KlantDTO(1,"Nena");
         orderDTO = new OrderDTO(1,"werkOrderNummer", "aankoopOrderNummer", "Specificatie", 200, "Nena");
-        certificaatDTO = new CertificaatDTO(1,"certificaatNummer", new Date(), 150);
+        certificaatDTO = new CertificaatDTO(0,1,"certificaatNummer", new Date(), 150);
         order = new Order("werkOrderNummer", "aankoopOrderNummer", "Specificatie", 200);
         klant = new Klant("Xan");
         certificaat = new Certificaat("certificaatNummer", new Date(), 150);

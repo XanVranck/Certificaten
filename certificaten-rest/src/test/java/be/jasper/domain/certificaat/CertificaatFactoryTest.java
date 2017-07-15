@@ -12,10 +12,11 @@ public class CertificaatFactoryTest {
     public static final Date CERTIFICAAT_DATUM = new Date();
     public static final int SPECIFIEK_TONNAGE = 200000;
     public static final int ORDER_ID = 2;
+    public static final int CERTIFICAAT_ID = 1;
 
     @Test
     public void creatCertificaat() throws Exception{
-        CertificaatDTO certificaatDTO = new CertificaatDTO(ORDER_ID, CERTIFICAAT_NUMBER, CERTIFICAAT_DATUM, SPECIFIEK_TONNAGE);
+        CertificaatDTO certificaatDTO = new CertificaatDTO(CERTIFICAAT_ID, ORDER_ID, CERTIFICAAT_NUMBER, CERTIFICAAT_DATUM, SPECIFIEK_TONNAGE);
         Certificaat certificaat = new CertificaatFactory().createCertificaat(certificaatDTO);
 
         assertThat(certificaat).isEqualToComparingFieldByField(new Certificaat(CERTIFICAAT_NUMBER, CERTIFICAAT_DATUM,SPECIFIEK_TONNAGE));

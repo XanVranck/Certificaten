@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class OrderControllerTest extends SpringIntegrationTest {
     private List<OrderDTO> orderDTOList = new ArrayList<>();
     private KlantDTO nenaDTO;
-    private OrderDTO orderDTO, newOrderDTO;
+    private OrderDTO orderDTO;
     private Order order;
 
     @Inject
@@ -31,10 +31,8 @@ public class OrderControllerTest extends SpringIntegrationTest {
 
     @Before
     public void setUp() throws Exception {
-        order = new Order("won", "aon", "spec",200);
-        orderRepository.addOrder(order);
         nenaDTO = new KlantDTO(1, "Nena");
-        orderDTO = new OrderDTO(2, "werkOrderNummer", "aankoopOrderNummer", "Specificatie", 200, "Nena");
+        orderDTO = new OrderDTO(1, "werkOrderNummer", "aankoopOrderNummer", "Specificatie", 200, "Nena");
         orderDTOList.add(orderDTO);
     }
 
@@ -56,7 +54,9 @@ public class OrderControllerTest extends SpringIntegrationTest {
 
     @Test
     public void updateOrder() throws Exception {
-        orderController.updateOrder(orderDTO, 1);
+        order = new Order("won", "aon", "spec",200);
+        orderRepository.addOrder(order);
+        orderController.updateOrder(orderDTO);
         assertThat(order.getWerkOrderNummer()).isEqualTo("werkOrderNummer");
         assertThat(order.getAankoopOrderNummer()).isEqualTo("aankoopOrderNummer");
         assertThat(order.getSpecificatie()).isEqualTo("Specificatie");

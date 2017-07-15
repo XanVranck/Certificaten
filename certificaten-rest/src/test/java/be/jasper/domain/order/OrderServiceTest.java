@@ -49,7 +49,7 @@ public class OrderServiceTest extends SpringIntegrationTest {
         Order order = new Order("won","aon", "spec", 200);
         orderRepository.addOrder(order);
         OrderDTO orderDTO = new OrderDTO(1,"werkOrder", "aankoop", "spec", 200, "Xan");
-        orderService.updateOrder(1, orderDTO);
+        orderService.updateOrder(orderDTO);
 
         assertThat(order.getWerkOrderNummer()).isEqualTo("werkOrder");
     }

@@ -14,7 +14,7 @@ public class Certificaat {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     @Column(name = "CERTIFICAAT_ID")
-    private int certificaatID;
+    private int certificaatId;
 
     @Column(name = "CERTIFICAAT_NUMMER", unique = true)
     private String certificaatNummer;
@@ -35,8 +35,8 @@ public class Certificaat {
     public Certificaat() {
     }
 
-    public int getCertificaatID() {
-        return certificaatID;
+    public int getCertificaatId() {
+        return certificaatId;
     }
 
     public String getCertificaatNummer() {
@@ -54,7 +54,7 @@ public class Certificaat {
     @Override
     public String toString() {
         return "Certificaat{" +
-                "certificaatID=" + certificaatID +
+                "certificaatId=" + certificaatId +
                 ", certificaatNummer='" + certificaatNummer + '\'' +
                 ", certificaatDatum=" + certificaatDatum +
                 ", specifiekTonnage=" + specifiekTonnage +
@@ -68,7 +68,7 @@ public class Certificaat {
 
         Certificaat that = (Certificaat) o;
 
-        if (certificaatID != that.certificaatID) return false;
+        if (certificaatId != that.certificaatId) return false;
         if (specifiekTonnage != that.specifiekTonnage) return false;
         if (certificaatNummer != null ? !certificaatNummer.equals(that.certificaatNummer) : that.certificaatNummer != null)
             return false;
@@ -77,7 +77,7 @@ public class Certificaat {
 
     @Override
     public int hashCode() {
-        int result = certificaatID;
+        int result = certificaatId;
         result = 31 * result + (certificaatNummer != null ? certificaatNummer.hashCode() : 0);
         result = 31 * result + (certificaatDatum != null ? certificaatDatum.hashCode() : 0);
         result = 31 * result + specifiekTonnage;

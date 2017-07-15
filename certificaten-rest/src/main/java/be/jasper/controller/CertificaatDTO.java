@@ -2,10 +2,8 @@ package be.jasper.controller;
 
 import java.util.Date;
 
-/**
- * Created by xanv on 11/05/2017.
- */
 public class CertificaatDTO {
+    private int certificaatId;
     private Integer orderID;
     private String certificaatNummer;
     private Date certificaatDatum;
@@ -14,7 +12,8 @@ public class CertificaatDTO {
     public CertificaatDTO() {
     }
 
-    public CertificaatDTO(Integer orderID, String certificaatNummer, Date certificaatDatum, int specifiekTonnage) {
+    public CertificaatDTO(int certificaatId, Integer orderID, String certificaatNummer, Date certificaatDatum, int specifiekTonnage) {
+        this.certificaatId = certificaatId;
         this.orderID = orderID;
         this.certificaatNummer = certificaatNummer;
         this.certificaatDatum = certificaatDatum;
@@ -37,6 +36,22 @@ public class CertificaatDTO {
         return orderID;
     }
 
+    public int getCertificaatId() {
+        return certificaatId;
+    }
+
+    public void setCertificaatId(int certificaatId) {
+        this.certificaatId = certificaatId;
+    }
+
+    public Integer getOrderID() {
+        return orderID;
+    }
+
+    public void setOrderID(Integer orderID) {
+        this.orderID = orderID;
+    }
+
     public void setCertificaatNummer(String certificaatNummer) {
         this.certificaatNummer = certificaatNummer;
     }
@@ -56,7 +71,8 @@ public class CertificaatDTO {
     @Override
     public String toString() {
         return "CertificaatDTO{" +
-                "orderID=" + orderID +
+                "certificaatId=" + certificaatId +
+                ", orderID=" + orderID +
                 ", certificaatNummer='" + certificaatNummer + '\'' +
                 ", certificaatDatum=" + certificaatDatum +
                 ", specifiekTonnage=" + specifiekTonnage +
@@ -70,6 +86,7 @@ public class CertificaatDTO {
 
         CertificaatDTO that = (CertificaatDTO) o;
 
+        if (certificaatId != that.certificaatId) return false;
         if (specifiekTonnage != that.specifiekTonnage) return false;
         if (orderID != null ? !orderID.equals(that.orderID) : that.orderID != null) return false;
         if (certificaatNummer != null ? !certificaatNummer.equals(that.certificaatNummer) : that.certificaatNummer != null)
@@ -79,7 +96,8 @@ public class CertificaatDTO {
 
     @Override
     public int hashCode() {
-        int result = orderID != null ? orderID.hashCode() : 0;
+        int result = certificaatId;
+        result = 31 * result + (orderID != null ? orderID.hashCode() : 0);
         result = 31 * result + (certificaatNummer != null ? certificaatNummer.hashCode() : 0);
         result = 31 * result + (certificaatDatum != null ? certificaatDatum.hashCode() : 0);
         result = 31 * result + specifiekTonnage;

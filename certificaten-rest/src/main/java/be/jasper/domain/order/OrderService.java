@@ -40,7 +40,7 @@ public class OrderService {
     public List<CertificaatDTO> getCertificaten(Order order) {
         return order.getCertificaten()
                 .stream()
-                .map(certificaat -> new CertificaatDTO(order.getOrderID(), certificaat.getCertificaatNummer(), certificaat.getCertificaatDatum(), certificaat.getSpecifiekTonnage()))
+                .map(certificaat -> new CertificaatDTO(certificaat.getCertificaatId(), order.getOrderID(), certificaat.getCertificaatNummer(), certificaat.getCertificaatDatum(), certificaat.getSpecifiekTonnage()))
                 .collect(Collectors.toList());
     }
 
