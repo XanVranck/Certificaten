@@ -43,16 +43,21 @@ public class OrderRepositoryTest extends SpringIntegrationTest {
 
     @Test
     public void findOrder_OneResult(){
-        Order actual = orderRepository.findOrder(xan.getOrderID());
+        Order actual = orderRepository.findOrderByID(xan.getOrderID());
 
         assertThat(actual).isEqualToComparingFieldByField(xan);
     }
 
     @Test
     public void findOrder_NoResult(){
-        Order actual = orderRepository.findOrder(254445);
+        Order actual = orderRepository.findOrderByID(254445);
 
         assertThat(actual).isNull();
+    }
+
+    @Test
+    public void findOrderById_returnsOrder() throws Exception {
+        assertThat(orderRepository.findOrderByID(1)).isEqualTo(xan);
     }
 
     @After

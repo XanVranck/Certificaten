@@ -19,8 +19,7 @@ public class OrderRepository {
         return entityManager.createQuery("select o from Order o", Order.class).getResultList();
     }
 
-    public Order findOrder(int orderId) {
+    public Order findOrderByID(int orderId) {
         return entityManager.find(Order.class, orderId);
     }
-
 }

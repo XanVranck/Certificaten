@@ -34,7 +34,7 @@ public class OrderService {
     }
 
     public Order findOrderById(int orderId) {
-        return orderRepository.findOrder(orderId);
+        return orderRepository.findOrderByID(orderId);
     }
 
     public List<CertificaatDTO> getCertificaten(Order order) {
@@ -46,5 +46,13 @@ public class OrderService {
 
     public void addCertificaat(Order order, Certificaat certificaat) {
        order.addCertificaat(certificaat);
+    }
+
+    public void updateOrder(int orderId, OrderDTO orderDTO) {
+        Order order = findOrderById(orderId);
+        order.setWerkOrderNummer(orderDTO.getWerkOrderNummer());
+        order.setAankoopOrderNummer(orderDTO.getAankoopOrderNummer());
+        order.setSpecificatie(orderDTO.getSpecificatie());
+        order.setTotaal(orderDTO.getTotaal());
     }
 }

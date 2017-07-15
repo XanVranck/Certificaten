@@ -59,6 +59,30 @@ public class Order {
         return totaal;
     }
 
+    public void setOrderID(int orderID) {
+        this.orderID = orderID;
+    }
+
+    public void setWerkOrderNummer(String werkOrderNummer) {
+        this.werkOrderNummer = werkOrderNummer;
+    }
+
+    public void setAankoopOrderNummer(String aankoopOrderNummer) {
+        this.aankoopOrderNummer = aankoopOrderNummer;
+    }
+
+    public void setSpecificatie(String specificatie) {
+        this.specificatie = specificatie;
+    }
+
+    public void setTotaal(int totaal) {
+        this.totaal = totaal;
+    }
+
+    public void setCertificaten(List<Certificaat> certificaten) {
+        this.certificaten = certificaten;
+    }
+
     public void addCertificaat(Certificaat certificaat) {
         certificaten.add(certificaat);
     }

@@ -109,6 +109,7 @@ export class ordersComponent implements OnInit {
     }
 
     goToCertificaten(order:OrderIdClass){
+        console.log("order", order.orderId)
         localStorage.setItem("order", JSON.stringify(order))
         this.router.navigate(['./certificaten'])    
     }

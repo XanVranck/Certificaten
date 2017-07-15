@@ -37,13 +37,13 @@ import {Router} from "@angular/router";
             <form class="ccform">
                 <div class="ccfield-prepend">
                     <span class="ccform-addon"><i class="fa fa-user-times fa-2x"></i></span>
-                <input #kl list="customers" name="klant" class="ccformfield" placeholder="klanten" required>
+                <input #klToDelete list="customers" name="klant" class="ccformfield" placeholder="klanten" required>
                     <dataList id="customers" >
-                        <option id="kl" (ngModel)="klanten" *ngFor="let klant of klanten" value="{{klant.naam}}">{{klant.klantId}}</option>
+                        <option id="klToDelete" (ngModel)="klanten" *ngFor="let klant of klanten" value="{{klant.naam}}">{{klant.klantId}}</option>
                     </dataList>  
                 </div>
                 <div class="ccfield-prepend">
-                    <input class="ccbtn" type="submit" (click)="deleteKlant(kl.value)" value="Verwijder klant">
+                    <input class="ccbtn" type="submit" (click)="deleteKlant(klToDelete.value)" value="Verwijder klant">
                 </div>
             </form>
         </div>
