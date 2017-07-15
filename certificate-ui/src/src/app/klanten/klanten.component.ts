@@ -32,6 +32,20 @@ import {Router} from "@angular/router";
                     <input class="ccbtn" type="submit" (click)="addKlant(naamKl.value)" value="Voeg klant toe">
                 </div>
             </form>
+
+            <h2>Delete customer</h2>
+            <form class="ccform">
+                <div class="ccfield-prepend">
+                    <span class="ccform-addon"><i class="fa fa-user-times fa-2x"></i></span>
+                <input #kl list="customers" name="klant" class="ccformfield" placeholder="klanten" required>
+                    <dataList id="customers" >
+                        <option id="kl" (ngModel)="klanten" *ngFor="let klant of klanten" value="{{klant.naam}}">{{klant.klantId}}</option>
+                    </dataList>  
+                </div>
+                <div class="ccfield-prepend">
+                    <input class="ccbtn" type="submit" (click)="deleteKlant(kl.value)" value="Verwijder klant">
+                </div>
+            </form>
         </div>
     `
 })
@@ -44,7 +58,7 @@ export class klantenComponent implements OnInit {
     }
 
     goToOrders(klantNaam:string){
-    if(klantNaam !== undefined){
+    if(klantNaam !== ""){
         localStorage.setItem("klantNaam", klantNaam)
        this.router.navigate(['./orders']);   
     }else{
@@ -62,6 +76,16 @@ export class klantenComponent implements OnInit {
             
        }
        this.ngOnInit();        
+    }
+
+    deleteKlant(naam:string){
+        if(naam !== ""){
+            this._klantService
+                .deleteKlant(naam)
+                .subscribe(() =>{
+                    alert(naam + " zit niet meer in de databank"), this.ngOnInit()
+                });
+        }
     }
 
     get klanten():Array<Klant>{                   
