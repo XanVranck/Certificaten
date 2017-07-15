@@ -67,4 +67,44 @@ public class Order {
     public List<Certificaat> getCertificaten() {
         return new ArrayList<>(certificaten);
     }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderID=" + orderID +
+                ", werkOrderNummer='" + werkOrderNummer + '\'' +
+                ", aankoopOrderNummer='" + aankoopOrderNummer + '\'' +
+                ", specificatie='" + specificatie + '\'' +
+                ", totaal=" + totaal +
+                ", certificaten=" + certificaten +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Order order = (Order) o;
+
+        if (orderID != order.orderID) return false;
+        if (totaal != order.totaal) return false;
+        if (werkOrderNummer != null ? !werkOrderNummer.equals(order.werkOrderNummer) : order.werkOrderNummer != null)
+            return false;
+        if (aankoopOrderNummer != null ? !aankoopOrderNummer.equals(order.aankoopOrderNummer) : order.aankoopOrderNummer != null)
+            return false;
+        if (specificatie != null ? !specificatie.equals(order.specificatie) : order.specificatie != null) return false;
+        return certificaten != null ? certificaten.equals(order.certificaten) : order.certificaten == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = orderID;
+        result = 31 * result + (werkOrderNummer != null ? werkOrderNummer.hashCode() : 0);
+        result = 31 * result + (aankoopOrderNummer != null ? aankoopOrderNummer.hashCode() : 0);
+        result = 31 * result + (specificatie != null ? specificatie.hashCode() : 0);
+        result = 31 * result + totaal;
+        result = 31 * result + (certificaten != null ? certificaten.hashCode() : 0);
+        return result;
+    }
 }

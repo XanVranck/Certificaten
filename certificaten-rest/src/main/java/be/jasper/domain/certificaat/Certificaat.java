@@ -50,4 +50,37 @@ public class Certificaat {
     public int getSpecifiekTonnage() {
         return specifiekTonnage;
     }
+
+    @Override
+    public String toString() {
+        return "Certificaat{" +
+                "certificaatID=" + certificaatID +
+                ", certificaatNummer='" + certificaatNummer + '\'' +
+                ", certificaatDatum=" + certificaatDatum +
+                ", specifiekTonnage=" + specifiekTonnage +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Certificaat that = (Certificaat) o;
+
+        if (certificaatID != that.certificaatID) return false;
+        if (specifiekTonnage != that.specifiekTonnage) return false;
+        if (certificaatNummer != null ? !certificaatNummer.equals(that.certificaatNummer) : that.certificaatNummer != null)
+            return false;
+        return certificaatDatum != null ? certificaatDatum.equals(that.certificaatDatum) : that.certificaatDatum == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = certificaatID;
+        result = 31 * result + (certificaatNummer != null ? certificaatNummer.hashCode() : 0);
+        result = 31 * result + (certificaatDatum != null ? certificaatDatum.hashCode() : 0);
+        result = 31 * result + specifiekTonnage;
+        return result;
+    }
 }

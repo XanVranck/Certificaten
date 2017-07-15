@@ -15,7 +15,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class OrderControllerTest extends SpringIntegrationTest {
     private List<OrderDTO> orderDTOList = new ArrayList<>();
     private KlantDTO nenaDTO;
-
     private OrderDTO orderDTO;
 
     @Inject
@@ -25,8 +24,8 @@ public class OrderControllerTest extends SpringIntegrationTest {
 
     @Before
     public void setUp() throws Exception {
-        nenaDTO = new KlantDTO(2, "Nena");
-        orderDTO = new OrderDTO(2, "werkOrderNummer", "aankoopOrderNummer", "Specificatie", 200, "Nena");
+        nenaDTO = new KlantDTO(1, "Nena");
+        orderDTO = new OrderDTO(1, "werkOrderNummer", "aankoopOrderNummer", "Specificatie", 200, "Nena");
         orderDTOList.add(orderDTO);
     }
 

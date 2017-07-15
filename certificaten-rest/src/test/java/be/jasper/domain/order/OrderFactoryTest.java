@@ -1,13 +1,12 @@
 package be.jasper.domain.order;
 
 import be.jasper.controller.OrderDTO;
-import be.jasper.infrastructure.SpringIntegrationTest;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class OrderFactoryTest extends SpringIntegrationTest{
+public class OrderFactoryTest {
 
     private static final int ORDER_ID = 1;
     private static final String WORK_ORDER_NUMBER = "01e12a";
