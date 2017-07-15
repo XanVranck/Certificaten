@@ -23,9 +23,4 @@ public class OrderRepository {
         return entityManager.find(Order.class, orderId);
     }
 
-    public void mapOrderWithCertificaat(int orderId, int certificaatId) {
-        entityManager.createNativeQuery("INSERT INTO orders_certificaten (order_order_id, certificaten_certificaat_id) VALUES (:orderId, :certificaatId)")
-                .setParameter("orderId", orderId)
-                .setParameter("certificaatId", certificaatId);
-    }
 }
