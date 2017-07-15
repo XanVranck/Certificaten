@@ -15,6 +15,7 @@ import {OrderService} from "../service/order.service";
     <table class="ccform">
      <thead>
          <tr>
+             <th *ngIf="getIsActive()">order ID</th>            
              <th>Workorder nr</th>
              <th>Purchase order nr</th>
              <th>Specification</th>
@@ -23,69 +24,112 @@ import {OrderService} from "../service/order.service";
      </thead>
      <tbody>
          <tr style="cursor:pointer" *ngFor="let order of orders" (click)="goToCertificaten(order)">
+            <td *ngIf="getIsActive()">
+             <div class="radiotext">
+                      <label style="cursor:pointer">{{order.orderId}}</label>
+             </div>
+             </td>
              <td>
              <div class="radiotext">
-                      <label style="cursor:pointer" for='workorder1'>{{order.werkOrderNummer}}</label>
+                      <label style="cursor:pointer">{{order.werkOrderNummer}}</label>
              </div>
              </td>
             <td>
              <div class="radiotext">
-                 <label style="cursor:pointer" for='workorder1'>{{order.aankoopOrderNummer}}</label>
+                 <label style="cursor:pointer">{{order.aankoopOrderNummer}}</label>
              </div>
              </td>
               <td>
              <div class="radiotext">
-                 <label style="cursor:pointer" for='workorder1'>{{order.specificatie}}</label>
+                 <label style="cursor:pointer">{{order.specificatie}}</label>
              </div>
              </td>
              <td>
              <div class="radiotext">
-                 <label style="cursor:pointer" for='workorder1'>{{order.totaal}}</label>
+                 <label style="cursor:pointer">{{order.totaal}}</label>
              </div>
              </td>
          </tr>
+         <br>
+         <br>
          
-           
+            <form action="">
+                <input type="checkBox" name="update" value="Update order" (change)="setIsActive()">Update an order
+            </form>
          </tbody>
 </table>
     
     
-    
-	<h2>Add new order</h2>
-    <form class="ccform">
-    <div class="ccfield-prepend">
-        <span class="ccform-addon"><i class="fa fa-plus-circle fa-2x"></i></span>
-        <input #orderWON class="ccformfield" type="text" placeholder="Work order nr" required>
+    <div *ngIf="!getIsActive()">
+        <h2>Add new order</h2>
+        <form class="ccform">
+        <div class="ccfield-prepend">
+            <span class="ccform-addon"><i class="fa fa-plus-circle fa-2x"></i></span>
+            <input #orderWON class="ccformfield" type="text" placeholder="Work order nr" required>
+        </div>
+        <div class="ccfield-prepend">
+            <span class="ccform-addon"><i class="fa fa-tasks fa-2x"></i></span>
+            <input #orderPON class="ccformfield" type="text" placeholder="Purchase order nr" required>
+        </div>
+        <div class="ccfield-prepend">
+            <span class="ccform-addon"><i class="fa fa-server fa-2x"></i></span>
+            <input #orderSpec class="ccformfield" type="text" placeholder="Specification" required>
+        </div>
+        <div class="ccfield-prepend">
+            <span class="ccform-addon"><i class="fa fa-calculator fa-2x"></i></span>
+            <input #orderTot class="ccformfield" type="number" placeholder="Total estimated" required>
+        </div>
+        <div class="ccfield-prepend">
+            <input class="ccbtn" type="submit" (click)="addOrder(orderWON.value, orderPON.value, orderSpec.value, orderTot.value)" value="Submit">
+        </div>
+        <div class="ccfield-prepend">
+            <input class="ccbtn" type="submit" (click)="terugNaarKlanten()" value="Terug naar klanten">
+        </div>
+        </form>
     </div>
-    <div class="ccfield-prepend">
-        <span class="ccform-addon"><i class="fa fa-tasks fa-2x"></i></span>
-        <input #orderPON class="ccformfield" type="text" placeholder="Purchase order nr" required>
-    </div>
-    <div class="ccfield-prepend">
-        <span class="ccform-addon"><i class="fa fa-server fa-2x"></i></span>
-        <input #orderSpec class="ccformfield" type="text" placeholder="Specification" required>
-    </div>
-     <div class="ccfield-prepend">
-        <span class="ccform-addon"><i class="fa fa-calculator fa-2x"></i></span>
-        <input #orderTot class="ccformfield" type="number" placeholder="Total estimated" required>
-    </div>
-    <div class="ccfield-prepend">
-        <input class="ccbtn" type="submit" (click)="addOrder(orderWON.value, orderPON.value, orderSpec.value, orderTot.value)" value="Submit">
-    </div>
-    <div class="ccfield-prepend">
-        <input class="ccbtn" type="submit" (click)="terugNaarKlanten()" value="Terug naar klanten">
-    </div>
-    </form>
 
+    <div *ngIf="getIsActive()">
+        <h2>Update an order</h2>
+        <form class="ccform">
+        <div class="ccfield-prepend">
+            <span class="ccform-addon"><i class="fa fa-id-card fa-2x"></i></span>
+            <input #orderID class="ccformfield" type="number" placeholder="order ID" required>
+        </div>
+        <div class="ccfield-prepend">
+            <span class="ccform-addon"><i class="fa fa-plus-circle fa-2x"></i></span>
+            <input #orderWON class="ccformfield" type="text" placeholder="Work order nr" required>
+        </div>
+        <div class="ccfield-prepend">
+            <span class="ccform-addon"><i class="fa fa-tasks fa-2x"></i></span>
+            <input #orderPON class="ccformfield" type="text" placeholder="Purchase order nr" required>
+        </div>
+        <div class="ccfield-prepend">
+            <span class="ccform-addon"><i class="fa fa-server fa-2x"></i></span>
+            <input #orderSpec class="ccformfield" type="text" placeholder="Specification" required>
+        </div>
+        <div class="ccfield-prepend">
+            <span class="ccform-addon"><i class="fa fa-calculator fa-2x"></i></span>
+            <input #orderTot class="ccformfield" type="number" placeholder="Total estimated" required>
+        </div>
+        <div class="ccfield-prepend">
+            <input class="ccbtn" type="submit" (click)="updateOrder(orderID.value, orderWON.value, orderPON.value, orderSpec.value, orderTot.value)" value="Submit">
+        </div>
+        <div class="ccfield-prepend">
+            <input class="ccbtn" type="submit" (click)="terugNaarKlanten()" value="Terug naar klanten">
+        </div>
+        </form>
+    </div>
 </div>
 `
 })
 
 export class ordersComponent implements OnInit {
     private _orders:Array<Order>
+    private _isActive:boolean;
 
     constructor(private _orderService:OrderService, private router: Router){
         this._orders = []
+        this._isActive = false;
     }
 
     ngOnInit(){
@@ -109,12 +153,30 @@ export class ordersComponent implements OnInit {
     }
 
     goToCertificaten(order:OrderIdClass){
-        console.log("order", order.orderId)
         localStorage.setItem("order", JSON.stringify(order))
         this.router.navigate(['./certificaten'])    
     }
 
+    updateOrder(orderId:number, werkOrderNummer:string, aankoopOrderNummer:string, specificatie:string, totaal:number){
+    if(orderId !== undefined && werkOrderNummer   !== "" && aankoopOrderNummer   !== "" && specificatie   !== "" && totaal !== undefined){
+        this._orderService
+            .updateOrder(orderId, werkOrderNummer, aankoopOrderNummer, specificatie, totaal)
+            .subscribe(()=>{
+                alert("Order aangepast!"),  this.ngOnInit();
+            });
+                
+    }
+    };
+
     terugNaarKlanten(){
         this.router.navigate(['./klanten'])
+    }
+
+    setIsActive(){
+        this._isActive = !this._isActive;
+    }
+
+    getIsActive(){
+        return this._isActive
     }
 }

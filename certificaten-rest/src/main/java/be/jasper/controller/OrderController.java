@@ -47,12 +47,11 @@ public class OrderController {
         return klantService.getOrders(klant);
     }
 
-    @RequestMapping(path = "/{orderId}", produces = "application/json", method = PUT)
+    @RequestMapping(method = PUT)
     @CrossOrigin(origins = "http://localhost:4200")
     @ResponseBody
-    public void updateOrder(@RequestBody OrderDTO orderDTO,
-                            @PathVariable (value = "orderId") int orderId) {
-        orderService.updateOrder(orderId, orderDTO);
+    public void updateOrder(@RequestBody OrderDTO orderDTO) {
+        orderService.updateOrder(orderDTO);
     }
 
 }

@@ -48,8 +48,8 @@ public class OrderService {
        order.addCertificaat(certificaat);
     }
 
-    public void updateOrder(int orderId, OrderDTO orderDTO) {
-        Order order = findOrderById(orderId);
+    public void updateOrder(OrderDTO orderDTO) {
+        Order order = findOrderById(orderDTO.getOrderId());
         order.setWerkOrderNummer(orderDTO.getWerkOrderNummer());
         order.setAankoopOrderNummer(orderDTO.getAankoopOrderNummer());
         order.setSpecificatie(orderDTO.getSpecificatie());

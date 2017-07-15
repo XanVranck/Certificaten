@@ -54,4 +54,18 @@ export class OrderService{
         return this._http
             .post(this._orderUrl, this._order)    
     }
+
+    updateOrder(orderId:number, werkOrderNummer:string, aankoopOrderNummer:string, specificatie:string, totaal:number){
+        this._order = { 
+                "orderId" : orderId,
+                "werkOrderNummer":werkOrderNummer,
+                "aankoopOrderNummer":aankoopOrderNummer,
+                "specificatie":specificatie,
+                "totaal":totaal,
+                "klantNaam":undefined
+            }
+        return this._http
+                .put(this._orderUrl, this._order)
+
+    }
 }
