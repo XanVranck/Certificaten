@@ -70,4 +70,13 @@ public class OrderControllerTest extends SpringIntegrationTest {
                 .isInstanceOf(OrderNietGevonden.class)
                 .hasMessage("Order met id 1 niet gevonden");
     }
+
+    @Test
+    public void deleteOrder() throws Exception {
+        order = new Order("won", "aon", "spec", 200);
+        orderRepository.addOrder(order);
+
+        orderController.deleteOrder(1);
+        assertThat(orderRepository.getOrders()).isEmpty();
+    }
 }

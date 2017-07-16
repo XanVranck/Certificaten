@@ -60,4 +60,9 @@ public class OrderService {
             throw new OrderNietGevonden(orderDTO.getOrderId());
         }
     }
+
+    public void deleteOrder(int orderId) {
+        Order order = findOrderById(orderId);
+        orderRepository.deleteOrder(order);
+    }
 }

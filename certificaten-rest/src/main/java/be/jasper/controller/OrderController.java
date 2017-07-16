@@ -54,4 +54,10 @@ public class OrderController {
         orderService.updateOrder(orderDTO);
     }
 
+    @RequestMapping(method = DELETE)
+    @CrossOrigin(origins = "http://localhost:4200")
+    @ResponseBody
+    public void deleteOrder(@RequestParam(value = "orderId") int orderId){
+        orderService.deleteOrder(orderId);
+    }
 }

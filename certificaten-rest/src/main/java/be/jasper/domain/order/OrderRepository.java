@@ -22,4 +22,8 @@ public class OrderRepository {
     public Order findOrderByID(int orderId) {
         return entityManager.find(Order.class, orderId);
     }
+
+    public void deleteOrder(Order order) {
+        entityManager.remove(order);
+    }
 }
