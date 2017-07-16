@@ -6,6 +6,7 @@ import be.jasper.domain.certificaat.Certificaat;
 import be.jasper.domain.klant.Klant;
 import be.jasper.domain.klant.KlantRepository;
 import be.jasper.errorhandler.KlantNietGevonden;
+import be.jasper.errorhandler.OrderNietGevonden;
 import org.springframework.stereotype.Service;
 
 import javax.inject.Inject;
@@ -50,9 +51,13 @@ public class OrderService {
 
     public void updateOrder(OrderDTO orderDTO) {
         Order order = findOrderById(orderDTO.getOrderId());
-        order.setWerkOrderNummer(orderDTO.getWerkOrderNummer());
-        order.setAankoopOrderNummer(orderDTO.getAankoopOrderNummer());
-        order.setSpecificatie(orderDTO.getSpecificatie());
-        order.setTotaal(orderDTO.getTotaal());
+        try {
+            order.setWerkOrderNummer(orderDTO.getWerkOrderNummer());
+            order.setAankoopOrderNummer(orderDTO.getAankoopOrderNummer());
+            order.setSpecificatie(orderDTO.getSpecificatie());
+            order.setTotaal(orderDTO.getTotaal());
+        }catch (NullPointerException e){
+            throw new OrderNietGevonden(orderDTO.getOrderId());
+        }
     }
 }

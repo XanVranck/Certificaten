@@ -13,7 +13,7 @@ import {Router} from "@angular/router";
                     <span class="ccform-addon"><i class="fa fa-users fa-2x"></i></span>
                  <input #kl list="customers" name="klant"  placeholder="Klanten" class="ccformfield" required>
                      <dataList id="customers" >
-                        <option id="kl" (ngModel)="klanten" *ngFor="let klant of klanten" value="{{klant.naam}}">{{klant.klantId}}</option>
+                        <option id="kl" (ngModel)="klanten" *ngFor="let klant of klanten" value="{{klant.naam}}"></option>
                     </dataList>                  
                 </div>
                 <div class="ccfield-prepend">

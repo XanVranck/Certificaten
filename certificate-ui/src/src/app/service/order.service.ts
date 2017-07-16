@@ -66,6 +66,15 @@ export class OrderService{
             }
         return this._http
                 .put(this._orderUrl, this._order)
+                ._catch((err) => {
+                        const details = {
+                            detail:err.json(), status :err.status
+                        };
+                                              
+                        alert(details.detail.message);                    
+                                       
+                        return Observable.throw(details);
+                    })
 
     }
 }

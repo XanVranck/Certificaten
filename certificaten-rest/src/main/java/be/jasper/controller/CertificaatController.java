@@ -5,6 +5,7 @@ import be.jasper.domain.certificaat.CertificaatFactory;
 import be.jasper.domain.certificaat.CertificaatService;
 import be.jasper.domain.order.Order;
 import be.jasper.domain.order.OrderService;
+import be.jasper.errorhandler.CertificaatNietGevonden;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -51,7 +52,7 @@ public class CertificaatController {
     @RequestMapping(method = PUT)
     @CrossOrigin(origins = "http://localhost:4200")
     @ResponseBody
-    public void updateCertificaat(@RequestBody CertificaatIdDTO certificaatIdDTO) {
+    public void updateCertificaat(@RequestBody CertificaatIdDTO certificaatIdDTO) throws CertificaatNietGevonden {
         certificaatService.updateOrder(certificaatIdDTO);
     }
 

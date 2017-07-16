@@ -38,6 +38,15 @@ export class CertificaatService{
     }
         return this._http
                 .put(this._certificaatUrl, this._certificaat)
+                ._catch((err) => {
+                        const details = {
+                            detail:err.json(), status :err.status
+                        };
+                                              
+                        alert(details.detail.message);                    
+                                       
+                        return Observable.throw(details);
+                    })
 
     }
 }

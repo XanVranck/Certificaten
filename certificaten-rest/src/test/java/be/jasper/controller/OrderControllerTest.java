@@ -3,6 +3,7 @@ package be.jasper.controller;
 import be.jasper.domain.order.Order;
 import be.jasper.domain.order.OrderRepository;
 import be.jasper.errorhandler.KlantNietGevonden;
+import be.jasper.errorhandler.OrderNietGevonden;
 import be.jasper.infrastructure.SpringIntegrationTest;
 import org.junit.Before;
 import org.junit.Test;
@@ -54,12 +55,19 @@ public class OrderControllerTest extends SpringIntegrationTest {
 
     @Test
     public void updateOrder() throws Exception {
-        order = new Order("won", "aon", "spec",200);
+        order = new Order("won", "aon", "spec", 200);
         orderRepository.addOrder(order);
         orderController.updateOrder(orderDTO);
         assertThat(order.getWerkOrderNummer()).isEqualTo("werkOrderNummer");
         assertThat(order.getAankoopOrderNummer()).isEqualTo("aankoopOrderNummer");
         assertThat(order.getSpecificatie()).isEqualTo("Specificatie");
         assertThat(order.getTotaal()).isEqualTo(200);
+    }
+
+    @Test
+    public void updateOrder_onbekendOrderId_throwsOrderNietGevonden() throws Exception {
+        assertThatThrownBy(() -> orderController.updateOrder(orderDTO))
+                .isInstanceOf(OrderNietGevonden.class)
+                .hasMessage("Order met id 1 niet gevonden");
     }
 }

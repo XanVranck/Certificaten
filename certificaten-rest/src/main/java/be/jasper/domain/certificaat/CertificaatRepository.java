@@ -11,8 +11,7 @@ public class CertificaatRepository {
     private EntityManager entityManager;
 
     public Certificaat findCertificaatById(int certificaatId) {
-        return entityManager.find(Certificaat.class, certificaatId);
-
+            return entityManager.find(Certificaat.class, certificaatId);
     }
 
 }
