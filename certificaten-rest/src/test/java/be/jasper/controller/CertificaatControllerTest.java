@@ -1,6 +1,7 @@
 package be.jasper.controller;
 
 import be.jasper.domain.certificaat.Certificaat;
+import be.jasper.domain.certificaat.CertificaatRepository;
 import be.jasper.domain.klant.Klant;
 import be.jasper.domain.klant.KlantRepository;
 import be.jasper.domain.order.Order;
@@ -34,6 +35,9 @@ public class CertificaatControllerTest extends SpringIntegrationTest {
     private List<CertificaatDTO> certificaatDTOList = new ArrayList<>();
     @Inject
     private KlantController klantController;
+
+    @Inject
+    private CertificaatRepository certificaatRepository;
 
     @Inject
     private KlantRepository klantRepository;
@@ -89,5 +93,13 @@ public class CertificaatControllerTest extends SpringIntegrationTest {
         assertThatThrownBy(() ->certificaatController.updateCertificaat(certificaatIdDTO))
                             .isInstanceOf(CertificaatNietGevonden.class)
                             .hasMessage("Certificaat met id 1 niet gevonden");
+    }
+
+    @Test
+    public void deleteCertificaat() throws Exception {
+        entityManager.persist(certificaat);
+
+        certificaatController.deleteCertificaat(1);
+        assertThat(certificaatController.getCertificaten(1)).isEmpty();
     }
 }

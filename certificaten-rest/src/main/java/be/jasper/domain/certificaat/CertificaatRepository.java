@@ -14,4 +14,7 @@ public class CertificaatRepository {
             return entityManager.find(Certificaat.class, certificaatId);
     }
 
+    public void deleteCertificaat(Certificaat certificaat) {
+        entityManager.remove(certificaat);
+    }
 }

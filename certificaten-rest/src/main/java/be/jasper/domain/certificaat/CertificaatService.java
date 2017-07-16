@@ -15,7 +15,7 @@ public class CertificaatService {
     public CertificaatService() {
     }
 
-    public void updateOrder(CertificaatIdDTO certificaatIdDTO) {
+    public void updateCertificaat(CertificaatIdDTO certificaatIdDTO) {
         Certificaat certificaat = findCertificaatById(certificaatIdDTO.getCertificaatId());
         try{
         certificaat.setCertificaatNummer(certificaatIdDTO.getCertificaatNummer());
@@ -28,5 +28,11 @@ public class CertificaatService {
 
     public Certificaat findCertificaatById(int certificaatId) {
             return certificaatRepository.findCertificaatById(certificaatId);
+    }
+
+    public void deleteCertificaat(int certificaatId) {
+        Certificaat certificaat = findCertificaatById(certificaatId);
+
+        certificaatRepository.deleteCertificaat(certificaat);
     }
 }

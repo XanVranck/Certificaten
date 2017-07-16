@@ -53,8 +53,14 @@ public class CertificaatController {
     @CrossOrigin(origins = "http://localhost:4200")
     @ResponseBody
     public void updateCertificaat(@RequestBody CertificaatIdDTO certificaatIdDTO) throws CertificaatNietGevonden {
-        certificaatService.updateOrder(certificaatIdDTO);
+        certificaatService.updateCertificaat(certificaatIdDTO);
     }
 
+    @RequestMapping(method = DELETE)
+    @CrossOrigin(origins = "http://localhost:4200")
+    @ResponseBody
+    public void deleteCertificaat(@RequestParam (value = "certificaatId") int certificaatId){
+        certificaatService.deleteCertificaat(certificaatId);
+    }
 
 }
